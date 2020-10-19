@@ -3,7 +3,7 @@
       <footer>
           <div id="spacing"></div>
           <div id="spacing"></div>
-          <p id="words"  v-html="detail + '<br/>' + copyRtSymbol +title"></p>
+          <p id="words"  v-html="'<br/>' + detail + '<br/>' + copyRtSymbol +title"></p>
           <div id="logo-spacing">
               <img id="logo" src="../assets/twitter.png" />
               <img id="logo" src="../assets/instagram.png" />
@@ -49,6 +49,7 @@ export default {
         height: 50px;
         flex:60;
         margin-top:0px;
+        font-size: 10px
     }
     #logo-spacing{
         flex:1;
@@ -59,8 +60,8 @@ export default {
         flex:5;
     }
     #logo{
-        width:30px;
-        height:30px;
+        width:20px;
+        height:20px;
         flex:1;
         margin-right:10px;
     }
