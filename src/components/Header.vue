@@ -11,7 +11,7 @@
         </header>
         <nav id="nav">
             <div id="router-link-container"></div>
-                <div id="router-link-center">
+                <div id="router-link-center" style='padding: 4px'>
                     <router-link id="router-link" to="/" exact>HOME</router-link>
                     <router-link id="router-link" to="/join_us" exact>JOIN US</router-link>
                     <router-link id="router-link" to="/requests" exact>REQUESTS</router-link>
@@ -93,8 +93,18 @@ export default {
         position: relative;
         flex: 1;
         text-decoration: none;
-        font-size: 20px;
+        font-size: 15px;
+        color: black
     }
+
+    #router-link:hover {
+        color: green
+    }
+
+    #router-link:hovisitedver {
+        color: black
+    }
+
     #router-link-container{
         position:relative;
         flex:1;
