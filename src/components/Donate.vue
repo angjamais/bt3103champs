@@ -7,7 +7,7 @@
          v-for="photo in photos"
          :key="photo.id">
       <img :src="thumbUrl(photo.filename)"></div></div>
-      <DonateButton></DonateButton>
+      <router-link id="router-link" to="/donate_form" exact><DonateButton></DonateButton></router-link>
       <br>
     </div>
 </template>
