@@ -5,18 +5,18 @@ import Home from './components/Home.vue'
 import JoinUs from './components/JoinUs.vue'
 import RegHousehold from './components/RegisterHousehold.vue'
 import RegVolunteer from './components/RegisterVolunteer.vue'
-import SignUp from './components/SignUp.vue'
 
 export default[
-    { path: '/', component: Home}, // default page is Home
-    { path: '/home', component: Home},
+    { path: '/', component: Dummy},
+    { path: '/join_us', component: Dummy},
     { path: '/requests', component: Requests},
+    { path: '/', component: Home},
     { path: '/join_us', component: JoinUs},
+    { path: '/requests', component: Dummy},
     { path: '/donate', component: Donate },
     { path: '/registerhousehold', component: RegHousehold},
     { path: '/registervolunteer', component: RegVolunteer},
-    { path: '/contact_us', component: Dummy}, // place the sign up page over here first
-    { path: '/inbox', component: SignUp },
-    { path: '/personal', component: Dummy },
-    { path: '/signup', component: Dummy }, // change to sign up later
+    { path: '/contact_us', component: Dummy },
+    { path: '/inbox', component: Dummy },
+    { path: '/personal', component: Dummy }
 ]
