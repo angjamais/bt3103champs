@@ -14,12 +14,10 @@ import RegisterAccount from './components/RegisterAccount.vue'
 
 
 export default[
-    { path: '/', component: Dummy},
-    { path: '/join_us', component: Dummy},
+    { path: '/', component: Home}, // default page is Home
+    { path: '/home', component: Home},
     { path: '/requests', component: Requests},
-    { path: '/', component: Home},
     { path: '/join_us', component: JoinUs},
-    { path: '/requests', component: Dummy},
     { path: '/donate', component: Donate },
     { path: '/donate_form', component: DonateForm },
     { path: '/registerhousehold', component: RegHousehold},
