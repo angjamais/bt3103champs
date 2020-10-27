@@ -21,7 +21,8 @@
 
     <br>
 
-    <label for="status">Please select beneficiary:</label>
+    <label for="status">I am donating in the name of:</label>
+>>>>>>> Stashed changes
     <select id="status"
             class="form-control"
             v-model="selectedstatus">
@@ -66,6 +67,8 @@
         font-size: larger;
         font-weight: bolder;
         padding-bottom: 0%;
+        margin-left:33%;
+        margin-right:33%;
     }
 h5 {
     font-size: medium;
