@@ -41,6 +41,7 @@ export default {
         vertical-align: middle;
         display: flex;
         flex-direction: row;
+        width:1500px;
     }
     #words {
         text-align: center;

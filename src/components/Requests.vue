@@ -46,29 +46,36 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     #filter {
+        margin-top:10px;
         display: flex;
         flex-direction: row;
         justify-content: center;
+        width:1500px;
+        font:30px;
     }
     .dropbtn {
+        font-size:15px;
+        align-content:center;
         height: 25px;
         width:100px;
-        margin-top: 28px;
         margin-left: 10px;
-        background-image: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.5) 51%);
     }
     #cards {
+        width:1500px;
         display: flex;
         flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
+        margin-top:40px;
     }
-    #card >*{
-        flex:1 1 20%;
+    #card > * {
+        flex: 1 1 10%;
+        background-color: green;
     }
 
-    #card{
-        margin-left:30px;
-        margin-top:30px;
+    #card {
+        width: 270px;
+        margin-left: 30px;
+        margin-top: 30px;
     }
 </style>
