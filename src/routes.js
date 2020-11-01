@@ -3,6 +3,8 @@ import Home from './components/Home.vue'
 import JoinUs from './components/JoinUs.vue'
 import RegHousehold from './components/RegisterHousehold.vue'
 import RegVolunteer from './components/RegisterVolunteer.vue'
+import ContactUs from './components/ContactUs.vue'
+import AboutMe from './components/AboutMe.vue'
 
 export default[
     { path: '/', component: Home},
@@ -11,7 +13,7 @@ export default[
     { path: '/registerhousehold', component: RegHousehold},
     { path: '/registervolunteer', component: RegVolunteer},
     { path: '/donate', component: Dummy },
-    { path: '/contact_us', component: Dummy },
+    { path: '/contact_us', component: ContactUs} ,
     { path: '/inbox', component: Dummy },
-    { path: '/personal', component: Dummy }
+    { path: '/personal', component: AboutMe }
 ]
