@@ -6,6 +6,8 @@ import Home from './components/Home.vue'
 import JoinUs from './components/JoinUs.vue'
 import RegHousehold from './components/RegisterHousehold.vue'
 import RegVolunteer from './components/RegisterVolunteer.vue'
+import ContactUs from './components/ContactUs.vue'
+import AboutMe from './components/AboutMe.vue'
 import SignUp from './components/SignUp.vue'
 import Login from './components/Login.vue'
 import ForgetPassword from './components/ForgetPassword.vue'
@@ -22,6 +24,9 @@ export default[
     { path: '/donate_form', component: DonateForm },
     { path: '/registerhousehold', component: RegHousehold},
     { path: '/registervolunteer', component: RegVolunteer},
+    { path: '/contact_us', component: ContactUs} ,
+    { path: '/inbox', component: Dummy },
+    { path: '/personal', component: AboutMe }
     { path: '/contact_us', component: Dummy}, // place the sign up page over here first
     { path: '/inbox', component: SignUp },
     { path: '/personal', component: Login },
