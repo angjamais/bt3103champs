@@ -1,7 +1,9 @@
 <template>
     <div id="app">
         <app-header v-bind:msg="title"></app-header>
-        <router-view></router-view>
+        <div id="body">
+            <router-view></router-view>
+        </div>
         <app-footer></app-footer>
     </div>
 </template>
@@ -27,5 +29,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#body{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 </style>

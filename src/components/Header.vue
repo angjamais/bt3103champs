@@ -58,6 +58,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #panel {
+    width:1500px;
   background: rgb(193, 237, 121);
   height: 100px;
   margin-top: -50px;
@@ -90,6 +91,7 @@ export default {
   font-size: 25px;
   display: flex;
   flex-direction: row;
+  width:1500px;
 }
 
 #slogan {

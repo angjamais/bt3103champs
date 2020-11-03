@@ -12,6 +12,8 @@ import SignUp from './components/SignUp.vue'
 import Login from './components/Login.vue'
 import ForgetPassword from './components/ForgetPassword.vue'
 import RegisterAccount from './components/RegisterAccount.vue'
+import GMap from './components/MapDemo.vue'
+import mRequest from './components/make_request/MakeRequest.vue'
 import Photo from './views/Photo.vue';
 //import BarChart from './components/BarChart.vue'
 //import PieChart from './components/PieChart.vue'
@@ -36,6 +38,8 @@ export default[
     { path: '/forget_password', component: ForgetPassword },
     { path: '/register_account', component: RegisterAccount },
     { path: '/signup', component: Dummy }, // change to sign up later
+    { path: '/mapdemo', component: GMap },
+    { path: '/makerequest', component: mRequest },
     { path: '/photo/:id', component: Photo},
     { path: '/dashboard', component: Dashboard},
 ]
