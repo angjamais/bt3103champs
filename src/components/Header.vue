@@ -27,6 +27,7 @@
       <div id="router-link-container"></div>
       <div id="router-link-center" style="padding: 4px">
         <router-link id="router-link" to="/home" exact>HOME</router-link>
+        <router-link id="router-link" to="/dashboard" exact>DASHBOARD</router-link>
         <router-link id="router-link" to="/join_us" exact>JOIN US</router-link>
         <router-link id="router-link" to="/requests" exact
           >REQUESTS</router-link
