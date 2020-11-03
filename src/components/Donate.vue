@@ -1,15 +1,17 @@
 <template>
-<div class ='hello'>
+<div>
     <h1> We appreciate your help! </h1>
     <h2>We are currently raising funds for these active projects and households</h2>
     <div class="donate">
     <div class="donate-panel"
          v-for="photo in photos"
          :key="photo.id">
-      <img :src="thumbUrl(photo.filename)"></div></div>
+        <router-link :to="`/photo/${photo.id}`">
+        <img :src="thumbUrl(photo.filename)">
+      </router-link></div></div>
       <router-link id="router-link" to="/donate_form" exact><DonateButton></DonateButton></router-link>
       <br>
-    </div>
+</div>
 </template>
 
 <script>
@@ -38,7 +40,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
   .donate {
     display: grid;
     grid-template-columns: auto auto auto;
@@ -59,16 +61,17 @@ export default {
 h1 {
     font-weight: heavy;
     margin-bottom: 0;
+    margin-top: 2%;
     font-size: 30px;
+    text-align: center;
 }
 h2 {
     font-weight: normal;
     font-size: 20px;
     margin: 0;
     padding-block-end: 0%;
-}
-h3 {
-  margin: 40px 0 0;
+    text-align: center;
+
 }
 a {
   color: #42b983;

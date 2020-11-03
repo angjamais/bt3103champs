@@ -15,6 +15,7 @@ Vue.use(VueGoogleMaps, {
     }
 });
 
+
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 
@@ -27,3 +28,4 @@ new Vue({
     render: h => h(App),
     router: myRouter
 }).$mount('#app')
+
