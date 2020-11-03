@@ -10,6 +10,7 @@
   "dependencies": {
     "bootstrap-vue": "^2.18.1",
     "core-js": "^3.6.5",
+    "firebase": "^8.0.0",
     "mutationobserver-shim": "^0.3.7",
     "vue": "^2.6.12",
     "vue-dd-form": "^1.0.11",
