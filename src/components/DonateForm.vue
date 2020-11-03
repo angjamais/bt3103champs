@@ -4,7 +4,7 @@
       <br>
     <p class="form-title">Support your chosen cause</p>
     <h5>Leave a one time $10 donation</h5>
-
+<br>
     <label for="beneficiary">Please select beneficiary:</label>
     <select id="beneficiary"
             class="form-control"
@@ -22,7 +22,6 @@
     <br>
 
     <label for="status">I am donating in the name of:</label>
->>>>>>> Stashed changes
     <select id="status"
             class="form-control"
             v-model="selectedstatus">
@@ -63,14 +62,18 @@
 
 
 <style scoped>
+form {
+    margin-left:33%;
+    margin-right:33%;
+}
     .form-title {
         font-size: larger;
         font-weight: bolder;
         padding-bottom: 0%;
-        margin-left:33%;
-        margin-right:33%;
+        margin-bottom:0%;
     }
 h5 {
+    padding-top:0%;
     font-size: medium;
 }
 
