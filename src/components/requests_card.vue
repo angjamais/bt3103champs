@@ -16,7 +16,7 @@
             </div>
             <div style="display:flex;flex-direction:column;align-items:center; margin-top:10px;">
                 <img id="icon" :src="getCash()" />
-                <b-button href="#" variant="primary" style="margin-bottom:0px;">View More >></b-button>
+                <b-button href="#" variant="primary" style="margin-bottom:0px; background-color:transparent; color:black;border-width:0px; margin-top:15px;" v-on:click="redirect()">View More >></b-button>
             </div>
         </b-card>
     </div>
@@ -31,7 +31,8 @@
             type: String,
             location: String,
             date:String,
-            cash: String
+            cash: String,
+            eventID: String,
         },
         components: {
             'BCard': BCard,
@@ -62,11 +63,17 @@
                 } else {
                     return require('../assets/no-cash.png')
                 }
+            },
+            redirect() {
+                if (this.type === 'donate') {
+                    this.$router.push({ name: 'signup-donate', params: { eventID: this.eventID } })
+                }
+                else {
+                    this.$router.push({ name: 'signup', params: { eventID: this.eventID } })
+                }
             }
         },
-        mounted() {
 
-        }
 
     }
 </script>
@@ -79,18 +86,19 @@
         border-style: solid;
         height: 100%;
         width: 100%;
-        font-size: 15px;
+        font-size: 5px;
         box-shadow: 1px 1px 5px 1px;
         border-color: rgb(113, 247, 35);
-        border-radius:10px;
-        margin-bottom:0px;
-        background-color:white;
-
+        border-radius: 10px;
+        margin-top: 5px;
+        background-color: white;
+        
     }
     #title {
         font-size: 20px;
         margin-top:10px;
         border-width:0px;
+        background-color:transparent;
     }
     #icon{
         height:30px;

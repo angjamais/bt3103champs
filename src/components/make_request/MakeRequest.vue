@@ -1,7 +1,7 @@
 <template>
-    <div>
-    <div class="card" v-bind:key="item" v-for="item in items">
-        <Card :title="item.title" :msg="item.msg" :type="item.type" />
+    <div style="background-color:transparent; border-color:transparent;justify-content:center;">
+    <div style="background-color:transparent; border-color:transparent;justify-content:center;" class="card" v-bind:key="item" v-for="item in items">
+        <Card :title="item.title" :msg="item.msg" :type="item.type"/>
     </div>
         </div>
 </template>
@@ -17,13 +17,14 @@
         data() {
             return {
                 items: [
-                    { title: "Donation", msg: "Please donate!", type: "donate" },
-                    { title: "Recruitment", msg: "Please join!", type: "recruitment" },
-                    { title: "Online", msg: "Help from anywhere!", type: "online" },
-                    { title: "Request", msg: "Help me!", type: "request" },
+                    { title: "Donation", msg: "Raise fund for individuals", type: "donate" },
+                    { title: "Recruitment", msg: "Find your voluteers", type: "recruitment" },
+                    { title: "Online", msg: "Help without been physically present", type: "online" },
+                    { title: "Request", msg: "Make a help request", type: "request" },
                 ]
             }
-        }
+        },
+
     }
 </script>
 
@@ -42,5 +43,6 @@
         background-color: white;
         display:flex;
         flex-direction:row;
+        justify-content:center;
     }
 </style>

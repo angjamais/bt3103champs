@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-form @submit="addAccount" @reset="onReset" style=" margin-top: 25px;">
+        <b-form @reset="onReset" style=" margin-top: 25px;">
             <b-form-group label="Full Name:" id="input-group">
                 <b-col>
                     <b-col><b-form-input id="input-1" v-model="acc.name" type="text" required placeholder="Enter Full Name" /></b-col>
@@ -9,7 +9,7 @@
 
             <b-form-group label="Email:" id="input-group" description="*We'll never share your email with anyone else.">
                 <b-col>
-                    <b-col><b-form-input id="input-1" v-model="acc.username" type="email" required placeholder="Enter Email" /></b-col>
+                    <b-col><b-form-input id="input-1" @change="changeStatus()" v-model="acc.username" type="email" required placeholder="Enter Email" /></b-col>
                 </b-col>
             </b-form-group>
 
@@ -19,21 +19,35 @@
                 </b-col>
             </b-form-group>
 
+            <b-form-group id="input-group" label="Gender:" label-for="input-3">
+                <b-form-select id="input-3"
+                               v-model="acc.gender"
+                               :options="genders"
+                               required></b-form-select>
+            </b-form-group>
+
+            <b-form-group label="Date of Birth:" id="input-group">
+                <b-col>
+                    <b-col><b-form-input id="input-1" v-model="acc.dob" type="text" required placeholder="Use the format: DDMMYYYY" /></b-col>
+                </b-col>
+            </b-form-group>
+
             <b-form-group label="Address:" id="input-group">
                 <b-col>
                     <b-col><b-form-input id="input-1" v-model="acc.address" type="text" required placeholder="Enter Valid Address" /></b-col>
                 </b-col>
             </b-form-group>
 
-            <b-form-group label="Password:" id="input-group" >
+            <b-form-group label="Password:" id="input-group">
                 <b-col>
                     <b-col><b-form-input id="input-1" v-model="acc.password" type="password" required placeholder="Password" /></b-col>
                 </b-col>
             </b-form-group>
 
-            <b-form-group label="Confirm Password:" id="input-group" >
+            <b-form-group label="Confirm Password:" id="input-group">
                 <b-col>
-                    <b-col><b-form-input id="input-1" v-model="acc.confirmpassword" type="password" required placeholder="Confirm Your Password" /></b-col>
+                    <b-col><b-form-input @change="changeStatus()" id="input-1" v-model="acc.confirmpassword" type="password" required placeholder="Confirm Your Password" /></b-col>
+                    <p style="color:red;font-size:3px;" v-show="this.pwMatch">*passwords do not match</p>
                 </b-col>
             </b-form-group>
             <div id="emergency">
@@ -45,7 +59,7 @@
 
                 <b-form-group label="Emergency Contact Name:" id="input-group">
                     <b-col>
-                        <b-col><b-form-input id="input-1" v-model="acc.emergency_contact_name" type="text"/></b-col>
+                        <b-col><b-form-input id="input-1" v-model="acc.emergency_contact_name" type="text" /></b-col>
                     </b-col>
                 </b-form-group>
                 <b-form-group label="Relationship:" id="input-group">
@@ -58,7 +72,7 @@
             <b-form-group id="input-group" label="Occupation:" label-for="input-3">
                 <b-form-select id="input-3"
                                v-model="acc.occupation"
-                               :options ="occupations"
+                               :options="occupations"
                                required></b-form-select>
             </b-form-group>
 
@@ -68,18 +82,21 @@
                 </b-form-checkbox-group>
             </b-form-group>
 
-            <b-button type="submit" variant="primary">Submit</b-button>
+            <b-button :disabled="subPermit" variant="primary" v-on:click="addAccount()">Submit</b-button>
             <b-button type="reset" variant="danger">Reset</b-button>
         </b-form>
     </div>
 </template>
 
 <script>
+    import { sha256 } from 'js-sha256';
     import database from '../firebase.js'
     import { BFormGroup, BButton, BForm, BFormCheckbox, BFormCheckboxGroup, BFormSelect, BFormInput } from "bootstrap-vue";
     export default {
         data() {
             return {
+                pwMatch: false,
+                subPermit:false,
                 acc: {
                     username: '',
                     password: '',
@@ -89,10 +106,13 @@
                     emergency_contact_name: '',
                     emergency_contact: '',
                     name: '',
+                    gender: null,
+                    dob:'',
                     contact: '',
                     address: '', 
                 },
-                occupations: [{ text: 'Select One', value: null },"Student", "Working Adult", "Retired"]
+                occupations: [{ text: 'Select One', value: null }, "Student", "Working Adult", "Retired"],
+                genders: [{ text: 'Select One', value: null }, "Male", "Female"]
 
 
             }
@@ -107,24 +127,65 @@
             'b-form': BForm,
         },
         methods: {
-            onSubmit(evt) {
-                evt.preventDefault()
-                alert(JSON.stringify(this.acc))
-            },
             addAccount() {
-                database.collection('accounts').add(this.acc)
-                alert('Registration Successful!')
-                this.username = '';
-                this.password = '';
-                this.confirmpassword = '';
-                this.occupation = null;
-                this.emergency_contact_relationship = '';
-                this.emergency_contact_name = '';
-                this.emergency_contact = '';
-                this.name = '';
-                this.contact = '';
-                this.address = '';
+                if (this.acc.password === this.acc.confirmpassword && this.acc.confirmpassword) {
+                    database.collection('accounts').doc(this.acc.username).get().then((doc) => {
+                        if (!doc.data()) {
+                            var account = {
+                                username: this.acc.username,
+                                password: sha256(this.acc.password),
+                                occupation: this.acc.occupation,
+                                emergency_contact_relationship: this.acc.emergency_contact_relationship,
+                                emergency_contact_name: this.acc.emergency_contact_name,
+                                emergency_contact: this.acc.emergency_contact,
+                                name: this.acc.name,
+                                contact: this.acc.contact,
+                                address: this.acc.address,
+                                gender: this.acc.gender,
+                                dob: this.acc.dob,
+                                events: []
+                            }
+                            database.collection('accounts').doc(this.acc.username).set(account)
+                            alert('Registration Successful!')
+                            localStorage.setItem("username", this.acc.username);
+                            this.$router.push({ path: '/personal' });
+                            location.reload();
+                            this.acc = {
+                                username: '',
+                                password: '',
+                                confirmpassword: '',
+                                occupation: null,
+                                emergency_contact_relationship: '',
+                                emergency_contact_name: '',
+                                emergency_contact: '',
+                                name: '',
+                                contact: '',
+                                address: '',
+                                gender: '',
+                                dob: '',
+                            }
+
+                        } else {
+                            alert("Username already taken")
+                        }
+                    })
+                    
+                } else {
+                    alert("Password entries are different. Please check")
+                } 
+            },
+            changeStatus() {
+                if (this.acc.password !== this.acc.confirmpassword) {
+                    this.pwMatch = true;
+                } else {
+                    this.pwMatch = false;
+                }
+                if (this.acc.username !== "") {
+                    this.subPermit = false;
+                }
+
             }
+            
         }
     }
 </script>
