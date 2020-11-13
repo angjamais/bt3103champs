@@ -1,17 +1,20 @@
 <template>
-    <div>
-        <div id='left'>
-            <h3> About Me </h3> <br>
-            <p> Name: {{info.name}}</p> <br>
-            <p> Gender: {{info.gender}}</p> <br>
-            <p> Phone: {{info.phone}}</p> <br>
-            <p> Date of birth:{{info.dob}} </p> <br>
-            <p> Account:{{info.acc}} </p> <br>
-        </div>
+    <div id="left">
+        <h3> About Me </h3> <br>
+        <p> Name: {{info.name}}</p> <br>
+        <p> Gender: {{info.gender}}</p> <br>
+        <p> Phone: {{info.phone}}</p> <br>
+        <p> Date of birth:{{info.dob}} </p> <br>
+        <p> Account:{{info.acc}} </p> <br>
+        <h3>My Events</h3>
+        <h3>Joined events</h3>
     </div>
 </template>
 
 <script>
+    /*
+     *                    
+     * */
     import database from '../firebase.js'
 
     export default {
@@ -51,7 +54,7 @@
         float: left;
         width: 60%;
         text-align: justify;
-        height: 400px;
+        height: 100%;
         margin-left:20%;
         margin-right:20%
     }

@@ -143,7 +143,8 @@
                                 address: this.acc.address,
                                 gender: this.acc.gender,
                                 dob: this.acc.dob,
-                                events: []
+                                events: [],
+                                my_events:[],
                             }
                             database.collection('accounts').doc(this.acc.username).set(account)
                             alert('Registration Successful!')
@@ -163,6 +164,8 @@
                                 address: '',
                                 gender: '',
                                 dob: '',
+                                my_events: [],
+                                events:[],
                             }
 
                         } else {

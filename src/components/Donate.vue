@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="main">
     <h1> We appreciate your help! </h1>
     <h2>We are currently raising funds for these active projects and households</h2>
     <div class="donate">
@@ -41,6 +41,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    #main{
+        width:1500px;
+    }
   .donate {
     display: grid;
     grid-template-columns: auto auto auto;

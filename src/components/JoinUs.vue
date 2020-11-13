@@ -9,27 +9,24 @@
         <br>
         <div id='left'>
             <br>
-            <img src = '../assets/household.jpg' alt = 'Household'>
-            <h3> HOUSEHOLD </h3>
-            <p style = 'font-size: 10px; padding-left: 15px; padding-right: 15px'> 
-                Seek help on iHelp from our warm-hearted volunteer users. 
-                Hesitate no more to voice out your needs. Post your needs 
-                and iHelp will automatically match available volunteers 
-                who wish to sign up.<br><br>
+            <div style="display:flex;flex-direction:row">
+                <img src='../assets/household.jpg' alt='Household'>
+                <img src='../assets/volunteer2.jpg' alt='Volunteer'>
+            </div>
+            <h3> Join us! </h3>
+            <p style='font-size: 10px; padding-left: 15px; padding-right: 15px'>
+                Seek help on iHelp from our warm-hearted volunteer users.
+                Hesitate no more to voice out your needs. Post your needs
+                and iHelp will automatically match available volunteers
+                who wish to sign up.
             </p>
-            <router-link id="router-link" to="/registerhousehold" exact> <reg></reg> </router-link>
-        </div>
-        <div id='right'>
-            <br>
-            <img src = '../assets/volunteer2.jpg' alt = 'Volunteer'>
-            <h3> VOLUNTEER </h3>
-            <p style = 'font-size: 10px; padding-left: 15px; padding-right: 15px'> 
-                You are our absolutely heroes and most precious asset. Sign up today for volunteer 
-                opportunities. We dearly appreciate your kindness. Your time and effort mean a lot 
+            <h3>Or</h3>
+            <p style='font-size: 10px; padding-left: 15px; padding-right: 15px'>
+                Sign up today for volunteer
+                opportunities. We dearly appreciate your kindness. Your time and effort mean a lot
                 to our beneficiaries. <br><br>
             </p>
-            <router-link id="router-link" to="/registervolunteer" exact> <reg></reg> </router-link>
-            
+            <router-link id="router-link" to="/register_account" exact> <reg></reg> </router-link>
         </div>
     </div>
 </template>
@@ -50,17 +47,10 @@ export default {
     }
     #left {
         float: left;
-        width: 30%;
-        height: 400px;
-        margin-left:20%;
-        box-shadow: 5px 5px 5px #888888
-    }
-    #right {
-        float: right;
-        width: 30%;
-        height: 400px;
-        margin-right:20%;
-        box-shadow: 5px 5px 5px #888888
+        width: 50%;
+        height: 500px;
+        margin-left: 20%;
+        box-shadow: 5px 5px 5px 5px
     }
     img {
         object-fit: cover;

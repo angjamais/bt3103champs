@@ -4,8 +4,6 @@ import DonateForm from './components/DonateForm.vue'
 import Requests from './components/Requests.vue'
 import Home from './components/Home.vue'
 import JoinUs from './components/JoinUs.vue'
-import RegHousehold from './components/RegisterHousehold.vue'
-import RegVolunteer from './components/RegisterVolunteer.vue'
 import ContactUs from './components/ContactUs.vue'
 import AboutMe from './components/AboutMe.vue'
 import SignUp from './components/SignUp.vue'
@@ -33,8 +31,6 @@ export default[
     { path: '/join_us', component: JoinUs},
     { path: '/donate', component: Donate },
     { path: '/donate_form', component: DonateForm },
-    { path: '/registerhousehold', component: RegHousehold},
-    { path: '/registervolunteer', component: RegVolunteer},
     { path: '/contact_us', component: ContactUs} ,
     { path: '/inbox', component: SignUp },
     { path: '/signup', component: SignUp, name: 'signup', props: true, meta: { requiresAuth: true } },
