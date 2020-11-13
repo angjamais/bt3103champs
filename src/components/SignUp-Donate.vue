@@ -27,10 +27,10 @@
                 </b-col>
             </b-row>
         </b-container>
-        <b-form @submit.prevent="onSubmit">
+        <b-form>
             <b-container>
                 <b-row align-v="center">
-                    <b-col><button class="button" :disabled="busy" v-on:click="donate">Donate</button></b-col>
+                    <b-col><button class="button"  v-on:click="donate()">Donate</button></b-col>
                 </b-row>
             </b-container>
         </b-form>
@@ -72,11 +72,11 @@
                     benefitiary: "",
                     event_participants: [],
                     slots: "",
+                    acc_info:"",
                 },
             };
         },
         methods: {
-
             fetchData() {
                 database.collection('events').doc(this.eventID).get().then(doc => {
                     var data = doc.data();
@@ -101,16 +101,18 @@
                         event_image: [],
                         event_cash: "",
                         event_status: true,
-                        benefitiary: '',
+                        benefitiary: data.benefitiary,
                         event_participants: data.event_participants,
                         slots: s,
+                        acc_info: data.acc_info,
                     }
                     this.rqst = rqst;
                 })
                 // do some error handling
             },
             donate() {
-                //var username = localStorage.getItem("username")
+                alert(this.rqst.acc_info)
+                this.$router.push({ name: 'donate', params: { beneficiary: this.rqst.benefitiary, acc: this.rqst.acc_info, eventID: this.eventID} })
             }
 
 

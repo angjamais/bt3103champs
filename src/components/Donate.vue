@@ -9,14 +9,12 @@
         <router-link :to="`/photo/${photo.id}`">
         <img :src="thumbUrl(photo.filename)">
       </router-link></div></div>
-      <router-link id="router-link" to="/donate_form" exact><DonateButton></DonateButton></router-link>
       <br>
 </div>
 </template>
 
 <script>
 import photos from '../photos.json';
-import DonateButton from '../components/DonateButton.vue'
 export default {
   name: 'donate',
   data() {
@@ -33,9 +31,6 @@ export default {
       return require(`@/components/images/thumbnails/${filename}`);
     },
   },
-  components: {
-      'DonateButton': DonateButton
-  }
 }
 </script>
 

@@ -27,10 +27,10 @@ import rrequest from './components/make_request/submitrequest-request.vue'
 export default[
     { path: '/', component: Home}, // default page is Home
     { path: '/home', component: Home},
-    { path: '/requests', component: Requests},
+    { path: '/requests', component: Requests, props: true},
     { path: '/join_us', component: JoinUs},
     { path: '/donate', component: Donate },
-    { path: '/donate_form', component: DonateForm },
+    { path: '/donate_form', name:"donate", component: DonateForm, props: true },
     { path: '/contact_us', component: ContactUs} ,
     { path: '/inbox', component: SignUp },
     { path: '/signup', component: SignUp, name: 'signup', props: true, meta: { requiresAuth: true } },

@@ -1,16 +1,19 @@
 <template>
     <div>
+        <button class="button " v-on:click="redirect">Make Request</button>
         <div id="filter">
-            <button class="button filter">Date</button>
-            <button class="button filter">Category</button>
-            <button class="button" v-on:click="redirect">Make Request</button>
+            <button v-on:click="changeFilter('all')" class="button filter">All</button>
+            <button v-on:click="changeFilter('online')" class="button filter">Online</button>
+            <button v-on:click="changeFilter('recruitment')" class="button">Recruitment</button>
+            <button v-on:click="changeFilter('donate')" class="button filter">Donation</button>
+            <button v-on:click="changeFilter('request')" class="button filter">Request</button>
         </div>
         <div id="cards">
             <div style="background-color:transparent; border-color:transparent" class="card" v-bind:key="item" v-for="item in items">
-                <Card :title="item.title" :location="item.location" :type="item.type" :cash="item.cash" :date="item.date" :eventID="item.eventID"/>
+                <Card :title="item.title" :location="item.location" :type="item.type" :cash="item.cash" :date="item.date" :eventID="item.eventID" />
             </div>
         </div>
-        
+
     </div>
 </template>
 
@@ -27,37 +30,59 @@
         },
         data() {
             return {
+                filter:"all",
                 items: []
             }
         },
         methods: {
             redirect() {
                 this.$router.push({ path: '/makerequest' })
+            }, 
+            filterCat(type) {
+                if (this.filter == "all") {
+                    return true
+                } else if (type == this.filter) {
+                    return true
+                }
+                return false
+            },
+            changeFilter(type) {
+                this.filter = type;
+                this.items = [];
+                this.getRequests();
+            },
+            getRequests() {
+                database.collection("events").get().
+                    then((data) => {
+                        data.forEach(doc => {
+                            var e_participants = doc.data().event_participants;
+                            var e_limit = doc.data().event_limit;
+                            var e_status = doc.data().event_status;
+                            if (e_participants.length != e_limit && e_status && this.filterCat(doc.data().event_type)) {
+                                var info = doc.data()
+                                var loc = info.location;
+                                var d = info.date;
+                                if (info.location === "") { loc = "-" }
+                                if (info.date === "") { d = "-" }
+                                if (info.event_status) {
+                                    var item = {
+                                        title: info.title,
+                                        location: loc,
+                                        type: info.event_type,
+                                        cash: info.event_cash,
+                                        date: d,
+                                        eventID: doc.id,
+                                    }
+                                    this.items.push(item);
+                                }
+                            }
+                        })
+                    }
+                    )
             }
         }, 
         mounted() {
-            database.collection("events").get().
-                then((data) => {
-                    data.forEach(doc => {
-                        var info = doc.data()
-                        var loc = info.location;
-                        var d = info.date;
-                        if (info.location === "") { loc = "-" }
-                        if (info.date === "") {d = "-"}
-                        if (info.event_status) {
-                            var item = {
-                                title: info.title,
-                                location: loc,
-                                type: info.event_type,
-                                cash: info.event_cash,
-                                date: d,
-                                eventID : doc.id,
-                            }
-                            this.items.push(item);
-                        }
-                    })
-                    } 
-                            )
+            this.getRequests();
         }
     }
 </script>
@@ -65,12 +90,13 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     #filter {
-        margin-top:10px;
         display: flex;
         flex-direction: row;
-        justify-content: center;
-        width:1500px;
-        font:30px;
+        justify-content: flex-start;
+        width: 1500px;
+        font: 30px;
+        margin-left: 454px;
+        margin-top: 5px;
     }
 
     #cards {
@@ -79,7 +105,9 @@
         flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
-        margin-top:0px;
+        background-color:transparent;
+        height:100%;
+       
     }
     #card > * {
         flex: 1 1 10%;
@@ -90,23 +118,25 @@
         width: 270px;
         margin-left: 30px;
         margin-top: 30px;
-       
     }
     .button {
         background: #76B3FA;
         border-radius: 100px;
-        padding: 20px 60px;
         color: #fff;
-        text-decoration: none;
-        font-size: 1.45em;
-        margin: 0 15px;
-        height: 40px;
-        width: 200px;
         font-size: 15px;
-        margin-top: 25px;
-        padding: 0.6em;
+        margin: 0 15px;
+        height: 25px;
+        width: 140px;
+        font-size: 15px;
+        padding: 0em;
         outline: none;
-        margin-top:0px;
+        margin-top: 0px;
+        align-content: center;
+        font-size: 15px;
+        align-content: center;
+        margin-left: 0px;
+        padding: 0em;
+        margin-top: 8px;
     }
     .filter {
         font-size: 15px;
