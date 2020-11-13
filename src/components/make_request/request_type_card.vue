@@ -1,12 +1,17 @@
 <template>
-    <div id ="cards" >
+    <div id="cards">
         <BCard id="card">
             <img style="width:50px" :src="getImage()" />
+
             <div>
                 <h5>{{title}}</h5>
                 <p>{{msg}}</p>
+
             </div>
+
+
         </BCard>
+        <button style="width:40px;"><img src="../../assets/left-arrow.png" style="width:50px;height:50px;margin-left:10px; margin-top:50px;" v-on:click="redirect()" /></button>
     </div>
 </template>
 
@@ -25,6 +30,9 @@
         methods: {
             getImage() {
                 return require('../../assets/' + this.type + '.png');
+            },
+            redirect() {
+                this.$router.push("submitrequest-" + this.type);
             }
         }
     }
@@ -39,5 +47,8 @@
         justify-content: center;
         flex-wrap: wrap;
         margin-top: 20px;
+    }
+    button{
+        background-color:transparent;
     }
 </style>

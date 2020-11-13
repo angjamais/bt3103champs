@@ -1,19 +1,45 @@
 <template>
     <div>
         <div id='left'>
-        <h3> About Me </h3>
-        <p> Name: </p> <br>
-        <p> Gender: <br> Phone: <br> </p> <br>
-        <p> Date of birth: <br> </p> <br>
-        <p> Account: <br> </p> <br>
-        <p> Thank-you notes received: <br> </p>
+            <h3> About Me </h3> <br>
+            <p> Name: {{info.name}}</p> <br>
+            <p> Gender: {{info.gender}}</p> <br>
+            <p> Phone: {{info.phone}}</p> <br>
+            <p> Date of birth:{{info.dob}} </p> <br>
+            <p> Account:{{info.acc}} </p> <br>
         </div>
     </div>
 </template>
 
 <script>
-export default {
-    
+    import database from '../firebase.js'
+
+    export default {
+        data() {
+            return {
+                info: {
+                    name: "",
+                    gender: "",
+                    phone: "",
+                    dob: "",
+                    acc: "",
+                }
+            }
+        },
+        mounted() {
+            var username = localStorage.getItem("username");
+            database.collection('accounts')
+            .doc(username)
+            .get()
+            .then((doc) => {
+                var info = doc.data();
+                this.info.name = info.name;
+                this.info.gender = info.gender;
+                this.info.phone = info.contact;
+                this.info.dob = info.dob;
+                this.info.acc = username;
+            })
+    }
 }
 </script>
 

@@ -1,9 +1,11 @@
 <template>
     <div id="app">
         <app-header v-bind:msg="title"></app-header>
+        <div id="sidebar"></div>
         <div id="body">
             <router-view></router-view>
         </div>
+        <div id="sidebar"></div>
         <app-footer></app-footer>
     </div>
 </template>
@@ -29,10 +31,17 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  display:flex;
+  flex-direction:column;
 }
 #body{
     display:flex;
     flex-direction:column;
     justify-content:center;
+    flex:10;
+}
+#sidebar{
+    flex:1;
+    background-color:red;
 }
 </style>

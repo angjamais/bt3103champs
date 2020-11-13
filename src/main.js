@@ -24,6 +24,15 @@ const myRouter = new VueRouter({
     mode: 'history'
 })
 
+myRouter.beforeEach((to, from, next) => {
+    var username = localStorage.getItem("username")
+    if (to.meta.requiresAuth && !username) {
+        alert("Please log in first!");
+        next({path:"/login"});
+    } else {
+        next();
+    }
+})
 new Vue({
     render: h => h(App),
     router: myRouter
