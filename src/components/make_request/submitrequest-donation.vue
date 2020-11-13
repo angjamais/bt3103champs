@@ -4,7 +4,7 @@
             <h1>Donation</h1>
 
             <label>Benefitiary Name: </label>
-            <b-form-input v-model="rqst.organiser" id="input-1" type="text" required />
+            <b-form-input v-model="rqst.benefitiary" id="input-1" type="text" required />
 
             <label>Summary: </label>
             <b-form-input v-model="rqst.title" id="input-1" type="text" required placeholder="Title for your event" />
@@ -87,6 +87,7 @@
                     description:"",
                     location: "",
                     organiser: "",
+                    organiser_email: "",
                     date: "",
                     time: "",
                     contact: "",
@@ -129,7 +130,17 @@
                 this.processing = true
                 // Act a bit
                 this.clearInterval()
-                database.collection('events').add(this.rqst)
+                var username = localStorage.getItem("username")
+                this.organiser_email = username;
+                database.collection('events').add(this.rqst).then((doc) => {
+                    var id = doc.id;
+                    database.collection("accounts").doc(username).get().then(doc => {
+                        var my_events = doc.data().my_events;
+                        my_events.push(id);
+                        database.collection("accounts").doc(username).set({ my_events: my_events }, { merge: true })
+                    })
+
+                })
                 this.interval = setInterval(() => {
                     if (this.counter < 13) {
                         this.counter = this.counter + 1

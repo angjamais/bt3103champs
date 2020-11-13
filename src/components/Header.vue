@@ -65,7 +65,7 @@
         mounted() {
             var username = localStorage.getItem("username");
             if (username) {
-                this.status = "Log out"
+                this.status ="Log out"
             } else {
                 this.status = "Log in"
             }

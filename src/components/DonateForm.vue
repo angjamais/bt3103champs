@@ -4,15 +4,10 @@
         <br>
         <p class="form-title">Support your chosen cause</p>
         <h5>Leave a one time $10 donation</h5>
-        <br>
-        <label for="beneficiary">Please select beneficiary:</label>
-        <select id="beneficiary"
-                class="form-control"
-                v-model="selectedBeneficiary">
-            <option value="Null" selected disabled>Choose an option</option>
-            <option v-for="beneficiary in beneficiaries" v-bind:key="beneficiary">{{ beneficiary }}</option>
-        </select>
-
+        <h3>Beneficiary</h3>
+        <p>{{beneficiary}}</p>
+        <h2 style="text-align:center">Account Detail</h2>
+        <p>{{acc}}</p>
         <br>
 
         <!-- Default input email -->
@@ -50,20 +45,39 @@
         <textarea type="text" id="defaultFormContactMessageEx" class="form-control" rows="3" value="Optional"></textarea>
 
         <div class="text-center mt-4">
-            <button class="btn btn-outline-warning" type="submit">Donate<i class="far fa-paper-plane ml-2"></i></button>
+            <button class="btn btn-outline-warning" type="submit" v-on:click="donate">Donate<i class="far fa-paper-plane ml-2"></i></button>
         </div>
     </form>
   <!-- Default form contact -->
 </template>
 
 <script>
+    import database from '../firebase.js';
+
     export default {
+        props: {
+            beneficiary: String,
+            acc: String,
+            eventID: String,
+        },
         data() {
             return {
                 selectedBeneficiary: 'E Elder care',
-                beneficiaries: ['Auntie A', 'Uncle B', 'Family C', 'D Children Home', 'E Elder care'],
                 selectedStatus: 'Myself',
                 statuses: ['Myself', 'An organisation', 'Someone Else']
+            }
+        },
+        methods: {
+             donate() {
+                var username = localStorage.getItem("username");
+                database.collection('accounts').doc(username).get().then(async (doc) => {
+                    var data = doc.data()
+                    var participated_event = data.events
+                    participated_event.push(this.eventID)
+                    await database.collection('accounts').doc(username).set({ events: participated_event }, { merge: true }).then(() => {
+                        alert("Thank you for your donation!");
+                    })
+                })
             }
         }
     }

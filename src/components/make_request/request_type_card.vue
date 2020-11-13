@@ -47,6 +47,8 @@
         justify-content: center;
         flex-wrap: wrap;
         margin-top: 20px;
+        height: 100%;
+        background-color: transparent;
     }
     button{
         background-color:transparent;

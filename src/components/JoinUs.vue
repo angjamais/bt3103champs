@@ -49,7 +49,7 @@ export default {
         float: left;
         width: 50%;
         height: 500px;
-        margin-left: 20%;
+        margin-left: 25%;
         box-shadow: 5px 5px 5px 5px
     }
     img {
