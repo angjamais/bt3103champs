@@ -90,7 +90,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #panel {
-    width:1500px;
+  width:100%;
   background: rgb(193, 237, 121);
   height: 100px;
   margin-top: -50px;
@@ -107,7 +107,7 @@
 #logo-icon {
   height: 30px;
   width: 30px;
-  margin-left: 10px;
+  margin-left: 15px;
   margin-top: 50px;
 }
 #search-icon {
@@ -123,7 +123,7 @@
   font-size: 25px;
   display: flex;
   flex-direction: row;
-  width:1500px;
+  width:100%;
 }
 
 #slogan {
