@@ -33,7 +33,7 @@ export default {
   components: {
     apexcharts: VueApexCharts
   },
-  beforeMount() {
+  mounted() {
     this.fetchData();
   },
   data() {
@@ -89,34 +89,28 @@ export default {
       };
     },
     async fetchData() {
-      console.log("Event Data" + this.eventdata.size) 
-      database.collection('events').where("region", "==", "North").get().then(function(querySnapshot) {
-        //console.log("Fetched north data " + querySnapshot.size)
-        //this.north = querySnapshot.size
-        this.eventdata.push(querySnapshot.size)
+      await database.collection('events').where("region", "==", "North").get().then((querySnapshot) => {
+        //console.log("Fetched north data " + this.north)
+        this.north = querySnapshot.size
+        //this.eventdata.push(querySnapshot.size)
+        console.log("North" + this.north)
       });   
-      database.collection('events').where("region", "==", "East").get().then(function(querySnapshot) {
-        //this.east = querySnapshot.size
-        //console.log(this.east)
-        this.eventdata.push(querySnapshot.size)
+      await database.collection('events').where("region", "==", "East").get().then((querySnapshot) => {
+        this.east = querySnapshot.size
       }); 
-      database.collection('events').where("region", "==", "South").get().then(function(querySnapshot) {
-        //this.south = querySnapshot.size
-        this.eventdata.push(querySnapshot.size)
+      await database.collection('events').where("region", "==", "South").get().then((querySnapshot) => {
+        this.south = querySnapshot.size
       });  
-      database.collection('events').where("region", "==", "West").get().then(function(querySnapshot) {
-        //this.west = querySnapshot.size
-        this.eventdata.push(querySnapshot.size)
+      await database.collection('events').where("region", "==", "West").get().then((querySnapshot) => {
+        this.west = querySnapshot.size
       });  
-      database.collection('events').where("region", "==", "Central").get().then(function(querySnapshot) {
-        //this.central = querySnapshot.size
-        this.eventdata.push(querySnapshot.size)
+      await database.collection('events').where("region", "==", "Central").get().then((querySnapshot) => {
+        this.central = querySnapshot.size
       });  
-      //this.eventdata = [this.north, this.south, this.east, this.west, this.central]
       this.series = [
         {
           name: "series-1",
-          data: this.eventdata
+          data: [this.north, this.south, this.east, this.west, this.central]
         }
       ] 
      },

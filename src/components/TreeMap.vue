@@ -11,7 +11,7 @@
 
 <script>
 import VueApexCharts from "vue-apexcharts";
-
+import database from "../firebase.js"
 export default {
   name: "Chart",
   components: {
@@ -59,25 +59,21 @@ export default {
     },
     
     async fetchEventData() {
-      // do some error handling
-      //const res = await fetch("eventdata.json");
-      //const val = await res.json();
-      //console.log("MY data is " + res.json().data);
-      fetch("treemapdata.json")
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data[0].y);
-          console.log(data.length);
-          var i;
-          var arr = [];
-          for (i = 0; i < data.length; i++) {
-              var curr = {
-                  x: data[i].x,
-                  y: parseInt(data[i].y)
+      //fetch all users, fetch the number of events per user
+      var users = []
+      var arr = [];
+      await database.collection('accounts').get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          console.log(doc.data().events.length)
+          users.push(doc.data().name)
+          var curr = {
+                  x: doc.data().name,
+                  y: doc.data().events.length
               }
-              arr.push(curr)
-          }
-          this.treemapdata = arr;
+          arr.push(curr)
+        })
+      })
+      this.treemapdata = arr;
           console.log(this.treemapdata)
         //  this.treemapdata = data;
           this.series = [
@@ -86,9 +82,8 @@ export default {
               data: arr,
             }
           ]
-        })
-      //this.eventdata = val;
-      //console.log(val);
+
+      
     },
   }
 };
