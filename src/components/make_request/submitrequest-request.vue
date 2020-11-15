@@ -4,7 +4,7 @@
             <h1>Fill in you event details here</h1>
             <label>Event Title: </label>
             <b-form-input v-model="rqst.title" id="input-1" type="text" required placeholder="Title for your event" />
-
+            
             <label>Description: </label>
             <BFormTextarea id="textarea" v-model="rqst.description" placeholder="Enter Event Description" row="3" max-row="6"></BFormTextarea>
 

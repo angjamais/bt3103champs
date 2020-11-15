@@ -26,7 +26,7 @@ export default {
           eventdata: [],
           series: [{
             name: 'Events',
-            data: [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5]
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
           }],
           chartOptions: {
             chart: {
@@ -73,8 +73,8 @@ export default {
               }
             },
             yaxis: {
-              min: -10,
-              max: 40,
+              min: 0,
+              max: 10,
               title: {
                 text: 'Engagement',
               },
