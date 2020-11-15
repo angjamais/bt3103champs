@@ -3,7 +3,8 @@
         <b-container fluid>
             <b-row>
                 <b-col cols=6><BarChart></BarChart></b-col>
-                <b-col cols=6><GradientLine></GradientLine></b-col>
+                <b-col cols=6><GradientLine></GradientLine>
+                </b-col>
             </b-row>
             <b-row>
                <b-col>

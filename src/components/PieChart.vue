@@ -13,7 +13,7 @@ export default {
   components: {
     apexcharts: VueApexCharts
   },
-  mounted() {
+  beforeMount() {
     this.fetchEventData();
   },
   data() {
@@ -44,7 +44,7 @@ export default {
             }]
           },
           eventdata: [],
-          series: [0,0,0,0,0],
+          series: [1,1,1,1,1],
     };
   },
   methods: {
