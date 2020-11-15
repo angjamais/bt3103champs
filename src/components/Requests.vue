@@ -34,6 +34,9 @@
                 items: []
             }
         },
+        mounted() {
+            this.getRequests();
+        },
         methods: {
             redirect() {
                 this.$router.push({ path: '/makerequest' })
@@ -80,9 +83,6 @@
                     }
                     )
             }
-        }, 
-        mounted() {
-            this.getRequests();
         }
     }
 </script>

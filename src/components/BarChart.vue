@@ -27,14 +27,14 @@
 
 <script>
 import VueApexCharts from "vue-apexcharts";
-
+import database from '../firebase.js';
 export default {
   name: "Chart",
   components: {
     apexcharts: VueApexCharts
   },
   beforeMount() {
-    this.fetchEventData();
+    this.fetchData();
   },
   data() {
     return {
@@ -66,6 +66,11 @@ export default {
         }
       },
       eventdata: [],
+      north: 0,
+      south: 0,
+      east: 0,
+      central: 0,
+      west: 0,
       series: [
         {
           name: "series-1",
@@ -83,24 +88,38 @@ export default {
         }
       };
     },
-     async fetchEventData() {
-      // do some error handling
-      //const res = await fetch("eventdata.json");
-      //const val = await res.json();
-      //console.log("MY data is " + res.json().data);
-      fetch("eventdata.json").then(res => res.json()).then(data => {
-          console.log(data)
-          this.eventdata = data
-          this.series = [
+    async fetchData() {
+      console.log("Event Data" + this.eventdata.size) 
+      database.collection('events').where("region", "==", "North").get().then(function(querySnapshot) {
+        //console.log("Fetched north data " + querySnapshot.size)
+        //this.north = querySnapshot.size
+        this.eventdata.push(querySnapshot.size)
+      });   
+      database.collection('events').where("region", "==", "East").get().then(function(querySnapshot) {
+        //this.east = querySnapshot.size
+        //console.log(this.east)
+        this.eventdata.push(querySnapshot.size)
+      }); 
+      database.collection('events').where("region", "==", "South").get().then(function(querySnapshot) {
+        //this.south = querySnapshot.size
+        this.eventdata.push(querySnapshot.size)
+      });  
+      database.collection('events').where("region", "==", "West").get().then(function(querySnapshot) {
+        //this.west = querySnapshot.size
+        this.eventdata.push(querySnapshot.size)
+      });  
+      database.collection('events').where("region", "==", "Central").get().then(function(querySnapshot) {
+        //this.central = querySnapshot.size
+        this.eventdata.push(querySnapshot.size)
+      });  
+      //this.eventdata = [this.north, this.south, this.east, this.west, this.central]
+      this.series = [
         {
           name: "series-1",
-        data: this.eventdata
+          data: this.eventdata
         }
-      ]
-      } )
-      //this.eventdata = val;
-      //console.log(val);
-    },
+      ] 
+     },
   }
 };
 </script>

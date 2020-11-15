@@ -31,7 +31,7 @@
             type: String,
             location: String,
             date:String,
-            cash: String,
+            cash: Boolean,
             eventID: String,
         },
         components: {
@@ -58,7 +58,7 @@
                 }
             },
             getCash() {
-                if (this.cash === "yes") {
+                if (this.cash) {
                     return require('../assets/cash.png')
                 } else {
                     return require('../assets/no-cash.png')
