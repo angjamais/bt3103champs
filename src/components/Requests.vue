@@ -1,12 +1,12 @@
 <template>
     <div>
-        <button class="button " v-on:click="redirect">Make Request</button>
+        <button class="button" v-on:click="redirect">Make Request</button>
         <div id="filter">
-            <button v-on:click="changeFilter('all')" class="button filter">All</button>
-            <button v-on:click="changeFilter('online')" class="button filter">Online</button>
-            <button v-on:click="changeFilter('recruitment')" class="button">Recruitment</button>
-            <button v-on:click="changeFilter('donate')" class="button filter">Donation</button>
-            <button v-on:click="changeFilter('request')" class="button filter">Request</button>
+            <b-button v-on:click="changeFilter('all')" class="button filter">All</b-button>
+            <b-button v-on:click="changeFilter('online')" class="button filter">Online</b-button>
+            <b-button v-on:click="changeFilter('recruitment')" class="button filter">Recruitment</b-button>
+            <b-button variant="secondary" v-on:click="changeFilter('donate')" class="button filter">Donation</b-button>
+            <b-button variant="secondary" v-on:click="changeFilter('request')" class="button filter">Request</b-button>
         </div>
         <div id="cards">
             <div style="background-color:transparent; border-color:transparent" class="card" v-bind:key="item" v-for="item in items">
@@ -92,15 +92,19 @@
     #filter {
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
-        width: 1500px;
+        justify-content: center;
         font: 30px;
-        margin-left: 454px;
         margin-top: 5px;
+        
     }
 
+    #button {
+        font-size: 20px;
+        color: white;
+        font-weight: 400;
+        padding: 5px;
+    }
     #cards {
-        width:1500px;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -120,32 +124,29 @@
         margin-top: 30px;
     }
     .button {
-        background: #76B3FA;
         border-radius: 100px;
         color: #fff;
         font-size: 15px;
         margin: 0 15px;
-        height: 25px;
-        width: 140px;
-        font-size: 15px;
-        padding: 0em;
+        height: 35px;
+        width: 150px;
+        font-size: 18px;
+        font-weight: 800;
+        padding: 5px;
         outline: none;
-        margin-top: 0px;
-        align-content: center;
-        font-size: 15px;
         align-content: center;
         margin-left: 0px;
         padding: 0em;
         margin-top: 8px;
     }
     .filter {
-        background: #76B3FA rgb(121, 198, 121);
-        font-size: 15px;
+        background-color:teal;
+        font-size: 18px;
+        font-weight: 800;
         align-content: center;
-        height: 25px;
-        width: 100px;
+        height: 35px;
+        width: 150px;
         margin-left: 0px;
-        padding:0em;
         margin-top:8px;
     }
 

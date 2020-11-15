@@ -48,16 +48,16 @@
                                 if (doc.data()) {
                                     var password = doc.data().password;
                                     if (sha256(this.input.password) === password) {
-                                        alert("Hello " + doc.data().name)
+                                        //alert("Hello " + doc.data().name)
                                         localStorage.setItem("username", this.input.username);
                                         this.$router.push({ path: '/home' })
                                         location.reload()
                                     } else {
-                                        alert("Wrong combination of username and password!")
+                                       // alert("Wrong combination of username and password!")
                                         location.reload()
                                     }
                                 } else {
-                                    alert("User does not exist!")
+                                    //alert("User does not exist!")
                                     location.reload()
                                 }
                             })

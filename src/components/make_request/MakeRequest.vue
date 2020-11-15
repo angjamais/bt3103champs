@@ -1,7 +1,9 @@
 <template>
-    <div style="background-color:transparent; border-color:transparent;justify-content:center;">
-    <div style="background-color:transparent; border-color:transparent;justify-content:center;" class="card" v-bind:key="item" v-for="item in items">
+    <div style="display:flex; flex-direction:row; align-self:center;">
+    <div style="display:flex; flex-direction:column; justify-content: center;">
+    <div style="background-color:transparent; border-color:transparent;" class="card" v-bind:key="item" v-for="item in items">
         <Card :title="item.title" :msg="item.msg" :type="item.type"/>
+    </div>
     </div>
         </div>
 </template>

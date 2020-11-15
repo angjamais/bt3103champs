@@ -20,7 +20,7 @@
                 </b-col>
                 <b-col sm="4">
                     <br>
-                    <b-row align-h="center">
+                    <b-row align-h="left">
                         <SignUpButton></SignUpButton>
                         <p align="left">
                             Person of Contact: {{rqst.organiser}}<br />
@@ -107,7 +107,7 @@
                     event_image: "",
                     event_cash: "",
                     event_status: true,
-                    benefitiary: "",
+                    beneficiary: "",
                     event_participants: [],
                     slots: "",
                 },
@@ -187,7 +187,7 @@
                         event_image: [],
                         event_cash: "",
                         event_status: true,
-                        benefitiary: '',
+                        beneficiary: '',
                         event_participants: data.event_participants,
                         slots: s,
                     }
