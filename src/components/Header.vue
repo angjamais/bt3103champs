@@ -21,8 +21,7 @@
       <router-link to="/personal" exact
         ><img id="logo-icon" src="../assets/user-profile.png" />
       </router-link>
-      <b-button id="signout" v-on:click="signOut()">
-          {{this.status}}</b-button>
+      <b-button id="signout" v-on:click="signOut()">{{this.status}}</b-button>
           <div id="spacing-back"></div>
 </header>
     <nav id="nav">
@@ -76,7 +75,7 @@
                 if (username) {
                     localStorage.removeItem("username");
                     this.status = "Log in"
-                    this.$router.push({ path: '/home' })
+                    this.$router.push({ path: '/login' })
                     location.reload()
                 } else {
                     this.$router.push({ path: '/login' })
@@ -180,18 +179,14 @@
   flex: 5;
 }
 
-    #signout {
-        background-color: transparent;
-        height: 25px;
-        width: 100px;
-        font-size: 15px;
-        outline: none !important;
-        outline-width: 0 !important;
-        box-shadow: none;
-        -moz-box-shadow: none;
-        -webkit-box-shadow: none;
-        color:black;
+#signout {
+        background-color: gray;
+        color: white;
+        margin-top: 50px;
+        margin-left: 16px;
         border-color:transparent;
-        font-size:15px;
+        font-size:14px;
+        height: 30px;
+        width:80px;
     }
 </style>
