@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button class="button " v-on:click="redirect">Make Request</button>
+        <button class="button" v-on:click="redirect">Make Request</button>
         <div id="filter">
             <b-button v-on:click="changeFilter('all')" class="button filter">All</b-button>
             <b-button v-on:click="changeFilter('online')" class="button filter">Online</b-button>
