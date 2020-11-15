@@ -111,7 +111,7 @@
     }
     #card > * {
         flex: 1 1 10%;
-        background-color: green;
+        background-color: rgb(96, 162, 124);
     }
 
     #card {
@@ -139,6 +139,7 @@
         margin-top: 8px;
     }
     .filter {
+        background: #76B3FA rgb(121, 198, 121);
         font-size: 15px;
         align-content: center;
         height: 25px;

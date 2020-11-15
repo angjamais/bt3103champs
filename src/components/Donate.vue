@@ -37,9 +37,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     #main{
-        width:1500px;
+        width:100%;
     }
   .donate {
+    width: 100%;
     display: grid;
     grid-template-columns: auto auto auto;
     column-gap: 0rem;
@@ -62,8 +63,10 @@ h1 {
     margin-top: 2%;
     font-size: 30px;
     text-align: center;
+    width: 100%;
 }
 h2 {
+    width: 100%;
     font-weight: normal;
     font-size: 20px;
     margin: 0;

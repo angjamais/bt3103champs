@@ -1,5 +1,6 @@
 <template>
     <div id="card">
+
         <b-card>
             <BCardHeader id="title" style="margin-top:-20px; margin-left:0px;">{{title}}</BCardHeader><br><br>
             <div style="display:flex;flex-direction:row;justify-content:center;margin-top:-40px;">
@@ -81,6 +82,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     #card {
+        margin-top: 20px;
         border-width: 5px;
         border-color: black;
         border-style: solid;
@@ -90,7 +92,6 @@
         box-shadow: 1px 1px 5px 1px;
         border-color: rgb(113, 247, 35);
         border-radius: 10px;
-        margin-top: 5px;
         background-color: white;
         
     }
@@ -99,6 +100,7 @@
         margin-top:10px;
         border-width:0px;
         background-color:transparent;
+        width:100%;
     }
     #icon{
         height:30px;
