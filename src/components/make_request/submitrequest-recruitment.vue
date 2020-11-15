@@ -4,8 +4,9 @@
             <h1>Fill in you event details here</h1>
             <label>Event Title: </label>
             <b-form-input v-model="rqst.title" id="input-1" type="text" required placeholder="Title for your event" />
-             <label>Event Category: </label>
-            <b-form-input v-model="rqst.category" id="input-1" type="text" required placeholder="Event Category" />
+              <b-form-group label="Event Category:">
+                <b-form-select id="input-3" v-model="rqst.category" :options="categories" required></b-form-select>
+            </b-form-group>
              <label>Name of Beneficiary: </label>
             <b-form-input v-model="rqst.beneficiary" id="input-1" type="text" required placeholder="Beneficiary" />
             <label>Description: </label>
@@ -22,8 +23,9 @@
 
             <label>Location: </label>
             <b-form-input id="input-1" type="text" v-model="rqst.location" required placeholder="Location" />
-            <label>Region: </label>
-            <b-form-input id="input-1" type="text" v-model="rqst.region" required placeholder="Region" />
+                <b-form-group label="Region:">
+                <b-form-select id="input-3" v-model="rqst.region" :options="regions" required></b-form-select>
+            </b-form-group>
             <b-form-group label="Recruiting Limit:" description="*We limit participants of each event to be 5(including organiser) for safe distancing concerns">
                 <b-form-select id="input-3" v-model="rqst.event_limit" :options="recruitment" required></b-form-select>
             </b-form-group>
@@ -116,13 +118,21 @@
                     event_participants: [],
                     beneficiary: "",
                 },
-                recruitment: [{ text: 'Select One', value: null }, 1, 2, 3, 4]
+                recruitment: [{ text: 'Select One', value: null }, 1, 2, 3, 4],
+                regions: [{ text: 'Select One', value: null }, "North", "South", "East", "West", "Central"],
+                categories: [{ text: 'Select One', value: null }, "Community Service", "Elderly Care", "Disabled Care", "Environmental", "Education", "Cleaning", "Others"]
             }
         },
         beforeDestroy() {
             this.clearInterval()
         },
         methods: {
+            updateCategory(e) {
+            this.rqst.category = e.target.value
+            },
+            updateRegion(e) {
+            this.rqst.region = e.target.value
+            },
             clearInterval() {
                 if (this.interval) {
                     clearInterval(this.interval)

@@ -6,9 +6,9 @@
             <label>Beneficiary Name: </label>
             <b-form-input v-model="rqst.beneficiary" id="input-1" type="text" required />
 
-            <label>Event Category: </label>
-            <b-form-input v-model="rqst.category" id="input-1" type="text" required />
-
+                <b-form-group label="Event Category:">
+                <b-form-select id="input-3" v-model="rqst.category" :options="categories" required></b-form-select>
+            </b-form-group>
             <label>Summary: </label>
             <b-form-input v-model="rqst.title" id="input-1" type="text" required placeholder="Title for your event" />
 
@@ -105,13 +105,17 @@
                     beneficiary: '',
                     acc_info:'',
                 },
-                recruitment: [{ text: 'Select One', value: null }, 1, 2, 3, 4]
+                recruitment: [{ text: 'Select One', value: null }, 1, 2, 3, 4],
+                categories: [{ text: 'Select One', value: null }, "Community Service", "Elderly Care", "Disabled Care", "Environmental", "Education", "Cleaning", "Others"]
             }
         },
         beforeDestroy() {
             this.clearInterval()
         },
         methods: {
+            updateCategory(e) {
+            this.rqst.category = e.target.value
+            },
             clearInterval() {
                 if (this.interval) {
                     clearInterval(this.interval)
