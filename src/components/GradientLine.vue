@@ -11,17 +11,22 @@
 
 <script>
 import VueApexCharts from "vue-apexcharts";
-
+import database from "../firebase.js";
 export default {
   name: "Chart",
   components: {
     apexcharts: VueApexCharts,
   },
+  mounted() {
+    this.fetchData();
+  },
   data: function () {
     return {
+          x_categories: [],
+          eventdata: [],
           series: [{
-            name: 'Likes',
-            data: [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5, 13, 9, 17, 2, 7, 5]
+            name: 'Events',
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
           }],
           chartOptions: {
             chart: {
@@ -33,14 +38,10 @@ export default {
               curve: 'smooth'
             },
             xaxis: {
-              type: 'datetime',
-              categories: ['1/11/2000', '2/11/2000', '3/11/2000', '4/11/2000', '5/11/2000', '6/11/2000', '7/11/2000', '8/11/2000', '9/11/2000', '10/11/2000', '11/11/2000', '12/11/2000', '1/11/2001', '2/11/2001', '3/11/2001','4/11/2001' ,'5/11/2001' ,'6/11/2001'],
-              tickAmount: 10,
-              labels: {
-                formatter: function(value, timestamp, opts) {
-                  return opts.dateFormatter(new Date(timestamp), 'dd MMM')
-                }
-              }
+              //type: 'datetime',
+              categories: ['1/11/2020', '2/11/2020', '3/11/2020', '4/11/2020', '5/11/2020', '6/11/2020', '7/11/2020', '8/11/2020', '9/11/2020', '10/11/2020', '11/11/2020', '12/11/2020'],
+              //tickAmount: 10,
+              
             },
             title: {
               text: 'Personalised Events History',
@@ -72,8 +73,8 @@ export default {
               }
             },
             yaxis: {
-              min: -10,
-              max: 40,
+              min: 0,
+              max: 10,
               title: {
                 text: 'Engagement',
               },
@@ -87,8 +88,48 @@ export default {
         theme: {
           palette: e.target.value,
         },
-      };
+      }
     },
+     async fetchData() {
+        var username = localStorage.getItem("username")
+        console.log("Fetching data");
+        var dates = {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0,
+          "11": 0,
+          "18": 0,
+          "20": 0
+        }
+        await database.collection('accounts').doc(username).get().then(doc => {
+
+          var events = doc.data().events
+          console.log(events.length)
+          var eventid = doc.data().my_events
+          eventid.forEach(id => {
+            database.collection('events').doc(id).get().then(doc => {
+            console.log("Fetch event data")
+            console.log(doc.data().date.substring(8))
+            var day = doc.data().date.substring(8)
+            if (day.length != 0) {
+            dates[day] += 1
+            //match day to dictionary
+            console.log(Object.values(dates))
+            this.series= [{
+            name: 'Events',
+            data: Object.values(dates)
+          }]
+            }
+          })
+          })
+      })
+      }
   },
 };
 </script>
