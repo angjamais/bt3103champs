@@ -99,8 +99,8 @@
   flex-direction: row;
 }
 #logo {
-  height: 100px;
-  width: 100px;
+  height: 90px;
+  width: 90px;
   left: 150px;
 }
 
@@ -129,7 +129,7 @@
 #slogan {
   color: white;
   margin-top: 10px;
-  font-size: 70px;
+  font-size: 65px;
 }
 
 #router-link-center {
