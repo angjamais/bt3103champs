@@ -5,8 +5,11 @@
           <div id="spacing"></div>
           <p id="words"  v-html="'<br/>' + detail + '<br/>' + copyRtSymbol +title"></p>
           <div id="logo-spacing">
-              <img id="logo" src="../assets/twitter.png" />
-              <img id="logo" src="../assets/instagram.png" />
+ 
+              <a href= "https://twitter.com/official_ihelp">
+              <img id="logo" src="../assets/twitter.png" /></a>
+              <a href= "https://www.instagram.com/ihelp.official/">
+              <img id="logo" src="../assets/instagram.png" /></a>
               <img id="logo" src="../assets/facebook-app-logo.png" />
           </div>
           <div id="spacing"></div>
@@ -41,7 +44,7 @@ export default {
         vertical-align: middle;
         display: flex;
         flex-direction: row;
-        width:1500px;
+        width:100%;
     }
     #words {
         text-align: center;

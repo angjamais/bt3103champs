@@ -1,9 +1,10 @@
 <template>
     <div>
         <br>
+        <br>
         <div id='left'>
             <h1 style = 'padding: 10px'> ABOUT US </h1>
-            <p style = 'padding: 10px; font-size: 13px'> 
+            <p style = 'padding: 10px; padding-right: 30px; font-size: 14px'> 
                 Due to lockdown practices, social distancing and restrictions on gathering for COVID-19, 
                 jobs were lost and some people lost their income. Residents from low income neighbourhood 
                 suffer the most from the impact of the pandemic. However, although there is help reached 
@@ -20,6 +21,7 @@
             <br>
         </div>
         <img id = 'right' src = '../assets/Home page pic.jpg' alt = 'iHelp Home'>
+        <br>
         <p style='color: white'>     linebreak     </p>
         <router-link id="router-link" to="/join_us" exact> <custbtn> </custbtn> </router-link> 
         <br><br>

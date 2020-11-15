@@ -3,19 +3,23 @@
         <b-container class="bv-example-row">
             <b-row>
                 <b-col sm="6">
+                    <br>
                     <h1>{{rqst.title}}</h1>
                     <p id="org_details">
                         Organiser: {{rqst.organiser}}<br />
                         Location: {{rqst.location}}<br />
                         Date: {{rqst.date}}<br />
                         Time: {{rqst.time}}<br />
+                        <br>
                         <u id="org_details">
-                            *Please observe social distancing and wear masks at all timesduring the event
+                            *Please observe social distancing and wear your mask at all times during the event
                         </u>
                     </p>
+                    <br>
                     <p>{{rqst.description}}</p>
                 </b-col>
                 <b-col sm="4">
+                    <br>
                     <b-row align-h="center">
                         <SignUpButton></SignUpButton>
                         <p align="left">
