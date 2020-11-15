@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="main">
     <h1> We appreciate your help! </h1>
     <h2>We are currently raising funds for these active projects and households</h2>
     <div class="donate">
@@ -9,14 +9,12 @@
         <router-link :to="`/photo/${photo.id}`">
         <img :src="thumbUrl(photo.filename)">
       </router-link></div></div>
-      <router-link id="router-link" to="/donate_form" exact><DonateButton></DonateButton></router-link>
       <br>
 </div>
 </template>
 
 <script>
 import photos from '../photos.json';
-import DonateButton from '../components/DonateButton.vue'
 export default {
   name: 'donate',
   data() {
@@ -33,14 +31,14 @@ export default {
       return require(`@/components/images/thumbnails/${filename}`);
     },
   },
-  components: {
-      'DonateButton': DonateButton
-  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    #main{
+        width:1500px;
+    }
   .donate {
     display: grid;
     grid-template-columns: auto auto auto;

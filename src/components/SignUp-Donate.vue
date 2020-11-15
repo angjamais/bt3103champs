@@ -22,47 +22,17 @@
                             Person of Contact: {{rqst.organiser}}<br />
                             Contact Number: {{rqst.contact}}<br />
                             Event Status: Active<br />
-                            Slots: {{rqst.slots}}
                         </p>
                     </b-row>
                 </b-col>
             </b-row>
         </b-container>
-        <b-form @submit.prevent="onSubmit">
+        <b-form>
             <b-container>
                 <b-row align-v="center">
-                    <b-col><button class="button" :disabled="busy" type="submit">Sign Up</button></b-col>
+                    <b-col><button class="button"  v-on:click="donate()">Donate</button></b-col>
                 </b-row>
             </b-container>
-            <b-overlay :show="busy" no-wrap @shown="onShown" @hidden="onHidden">
-                <template #overlay>
-                    <div v-if="processing" class="text-center p-4 bg-primary text-light rounded">
-                        <img style="width:60px" src="../assets/cloud-computing.png" font-scale="4" />
-                        <div class="mb-3">Joining event...</div>
-                        <b-progress min="1"
-                                    max="15"
-                                    :value="counter"
-                                    variant="success"
-                                    height="3px"
-                                    class="mx-n4 rounded-0"></b-progress>
-                    </div>
-                    <div v-else
-                         ref="dialog"
-                         tabindex="-1"
-                         role="dialog"
-                         aria-modal="false"
-                         aria-labelledby="form-confirm-label"
-                         class="text-center p-3">
-                        <p><strong id="form-confirm-label">Are you sure?</strong></p>
-                        <div class="d-flex">
-                            <b-button variant="outline-danger" class="mr-3" @click="onCancel">
-                                Cancel
-                            </b-button>
-                            <b-button variant="outline-success" @click="onOK">OK</b-button>
-                        </div>
-                    </div>
-                </template>
-            </b-overlay>
         </b-form>
     </div>
 </template>
@@ -86,10 +56,6 @@
 
         data() {
             return {
-                busy: false,
-                processing: false,
-                counter: 1,
-                interval: null,
                 rqst: {
                     title: "",
                     description: "",
@@ -106,59 +72,11 @@
                     benefitiary: "",
                     event_participants: [],
                     slots: "",
+                    acc_info:"",
                 },
             };
         },
-        beforeDestroy() {
-            this.clearInterval()
-        },
         methods: {
-            clearInterval() {
-                if (this.interval) {
-                    clearInterval(this.interval)
-                    this.interval = null
-                }
-            },
-            onShown() {
-                this.$refs.dialog.focus()
-            },
-            onHidden() {
-                this.$refs.submit.focus()
-            },
-            onSubmit() {
-                this.busy = true
-            },
-            onCancel() {
-                this.busy = false
-            },
-            onOK() {
-                // Act a bit
-
-                this.counter = 1
-                var output = this.joinEvent();
-                this.processing = true
-                this.clearInterval()
-                this.interval = setInterval(() => {
-                    if (this.counter < 15) {
-                        this.counter = this.counter + 1
-                    } else {
-                        this.clearInterval()
-                        this.$nextTick(() => {
-                            this.busy = this.processing = false
-                            this.$router.push("requests");
-                            if (output === 1) {
-                                alert("Event joined!")
-                            } else {
-                                alert("Already joined this event!")
-                            }
-                            location.reload()
-                        })
-
-                    }
-                }, 250)
-
-
-            },
             fetchData() {
                 database.collection('events').doc(this.eventID).get().then(doc => {
                     var data = doc.data();
@@ -183,30 +101,18 @@
                         event_image: [],
                         event_cash: "",
                         event_status: true,
-                        benefitiary: '',
+                        benefitiary: data.benefitiary,
                         event_participants: data.event_participants,
                         slots: s,
+                        acc_info: data.acc_info,
                     }
                     this.rqst = rqst;
                 })
                 // do some error handling
             },
-            joinEvent() {
-                var username = localStorage.getItem("username")
-                if (!this.rqst.event_participants.includes(username)) {
-                    this.rqst.event_participants.push(username)
-                    database.collection('events').doc(this.eventID).set({ event_participants: this.rqst.event_participants }, { merge: true })
-                    database.collection('accounts').doc(username).get().then(doc => {
-                        var data = doc.data()
-                        var participated_event = data.events
-                        participated_event.push(this.eventID)
-                        database.collection('accounts').doc(username).set({ events: participated_event }, {merge:true})
-                        return 1;
-                    })
-                } else {
-                    return 0;
-                }
-
+            donate() {
+                alert(this.rqst.acc_info)
+                this.$router.push({ name: 'donate', params: { beneficiary: this.rqst.benefitiary, acc: this.rqst.acc_info, eventID: this.eventID} })
             }
 
 

@@ -21,8 +21,10 @@
       <router-link to="/personal" exact
         ><img id="logo-icon" src="../assets/user-profile.png" />
       </router-link>
-      <div id="spacing-back"></div>
-    </header>
+      <b-button id="signout" v-on:click="signOut()">
+          {{this.status}}</b-button>
+          <div id="spacing-back"></div>
+</header>
     <nav id="nav">
       <div id="router-link-container"></div>
       <div id="router-link-center" style="padding: 4px">
@@ -43,21 +45,52 @@
 </template>
 
 <script>
-export default {
+
+    import { BButton } from "bootstrap-vue";
+
+    export default {
+        components: {
+            'b-button': BButton
+        },
   data() {
-    return {};
+        return {
+            status: "Log in",
+        };
   },
   props: {
     msg: {
       type: String,
     },
-  },
+        },
+        mounted() {
+            var username = localStorage.getItem("username");
+            if (username) {
+                this.status ="Log out"
+            } else {
+                this.status = "Log in"
+            }
+        },
+        methods: {
+            signOut() {
+                var username = localStorage.getItem("username");
+                if (username) {
+                    localStorage.removeItem("username");
+                    this.status = "Log in"
+                    this.$router.push({ path: '/home' })
+                    location.reload()
+                } else {
+                    this.$router.push({ path: '/login' })
+                    location.reload()
+                }
+            }
+        }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #panel {
+    width:1500px;
   background: rgb(193, 237, 121);
   height: 100px;
   margin-top: -50px;
@@ -90,6 +123,7 @@ export default {
   font-size: 25px;
   display: flex;
   flex-direction: row;
+  width:1500px;
 }
 
 #slogan {
@@ -145,4 +179,19 @@ export default {
 #spacing-back {
   flex: 5;
 }
+
+    #signout {
+        background-color: transparent;
+        height: 25px;
+        width: 100px;
+        font-size: 15px;
+        outline: none !important;
+        outline-width: 0 !important;
+        box-shadow: none;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        color:black;
+        border-color:transparent;
+        font-size:15px;
+    }
 </style>

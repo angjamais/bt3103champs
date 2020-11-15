@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\make_request"
   ],
+  "SelectedNode": "\\src\\components\\SignUp-Donate.vue",
   "PreviewInSolutionExplorer": false
 }
