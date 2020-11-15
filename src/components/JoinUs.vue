@@ -1,5 +1,6 @@
 <template>
     <div id='body'>
+        <br>
         <h1 style='text-align: center'> Join iHelp today! </h1>
         <p> 
             iHelp is the perfect platform for underprivileged families to seek help from the society. 
@@ -50,7 +51,7 @@ export default {
         width: 50%;
         height: 500px;
         margin-left: 25%;
-        box-shadow: 5px 5px 5px 5px
+        box-shadow: 1px 1px 1px 1px
     }
     img {
         object-fit: cover;
@@ -63,6 +64,9 @@ export default {
     p {
         text-align: center;
         line-height: 1.5
+    }
+    h1{
+        font-size: 30px
     }
     h3 {
         color: rgb(240, 94, 26);
