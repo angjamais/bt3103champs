@@ -115,7 +115,7 @@
     }
     #card > * {
         flex: 1 1 10%;
-        background-color: green;
+        background-color: rgb(96, 162, 124);
     }
 
     #card {

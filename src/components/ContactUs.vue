@@ -1,6 +1,8 @@
 <template>
     <div id="main">
-
+        <br>
+        <br>
+    <h1> Locate us </h1>
         <GMap :lat=1.297104 :lng=103.777548 id="left" alt='iHelp Location'></GMap>
         <div id='right'>
             <div class='container'>
@@ -19,11 +21,10 @@
                     <label for="subject" style='font-size: 12px; text-align: left'> Enter your subject: </label> <br>
                     <input type="text" id='subject'> <br>
                     <label for="msg" style='font-size: 12px; text-align: left'> Enter your message: </label> <br>
-                    <textarea name="msg" rows="9" cols="43"></textarea> <br>
+                    <textarea name="msg" rows="6" cols="40"></textarea> <br>
                     <input type="submit" value="Submit">
 
                 </form>
-
             </div>
         </div>
     </div>
@@ -52,6 +53,7 @@ export default {
         width: 30%;
         text-align: justify;
         position:inherit;
+        margin-top: 50px;
         }
     #right {    
         width: 30%;
@@ -62,6 +64,11 @@ export default {
     p {
         text-align: left;
         padding-left: 30px
+    }
+    h1 {
+        text-align: left;
+        font-size: 30px;
+        
     }
     .container {
         width: 300px;
