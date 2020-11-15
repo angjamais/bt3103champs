@@ -5,7 +5,7 @@
 
             <div>
                 <h5>{{title}}</h5>
-                <p>{{msg}}</p>
+                <h6>{{msg}}</h6>
 
             </div>
 

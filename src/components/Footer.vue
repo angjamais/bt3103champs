@@ -24,7 +24,7 @@ export default {
   
   data(){
         return {
-            detail:'Contact iHelp: +65 XXXX XXXX | contact@ihelp.com',
+            detail:'Contact iHelp: +65 8728 1234 | contact@ihelp.com',
             copyRtSymbol:'&copy; ',
             title:'iHelp'
         }
@@ -53,7 +53,7 @@ export default {
         height: 50px;
         flex:60;
         margin-top:0px;
-        font-size: 10px
+        font-size: 15px
     }
     #logo-spacing{
         flex:1;
