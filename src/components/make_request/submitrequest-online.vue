@@ -4,7 +4,9 @@
             <h1>Fill in you event details here</h1>
             <label>Event Title: </label>
             <b-form-input v-model="rqst.title" id="input-1" type="text" required placeholder="Title for your event" />
-
+            <b-form-group label="Event Category:">
+                <b-form-select id="input-3" v-model="rqst.category" :options="categories" required></b-form-select>
+            </b-form-group>
             <label>Description: </label>
             <BFormTextarea id="textarea" v-model="rqst.description" placeholder="Enter Event Description" row="3" max-row="6"></BFormTextarea>
 
@@ -93,6 +95,7 @@
                 rqst: {
                     title: "",
                     description:"",
+                    region: "",
                     location: "",
                     organiser: "",
                     organiser_email: "",
@@ -101,13 +104,15 @@
                     contact: "",
                     event_limit: null,
                     event_type: "online",
+                    category: "",
                     event_image: [],
                     event_cash: false,
                     event_status: true,
                     event_participants: [],
-                    benefitiary:'',
+                    beneficiary:"",
                 },
-                recruitment: [{ text: 'Select One', value: null }, 1, 2, 3, 4]
+                recruitment: [{ text: 'Select One', value: null }, 1, 2, 3, 4],
+                categories: [{ text: 'Select One', value: null }, "Community Service", "Elderly Care", "Disabled Care", "Environmental", "Education", "Cleaning", "Others"]
             }
         },
         beforeDestroy() {

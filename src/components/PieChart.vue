@@ -6,6 +6,7 @@
 
 <script>
 import VueApexCharts from "vue-apexcharts";
+import database from "../firebase.js";
 
 export default {
   name: "Chart",
@@ -42,7 +43,8 @@ export default {
               }
             }]
           },
-series: [44, 55, 13, 43, 22],
+          eventdata: [],
+          series: [1,1,1,1,1],
     };
   },
   methods: {
@@ -52,7 +54,32 @@ series: [44, 55, 13, 43, 22],
           palette: e.target.value
         }
       };
-    }
+    },
+    async fetchEventData() {
+      await database.collection('events').where("category", "==", "Social or Community Service").get().then((querySnapshot) => {
+         
+         this.eventdata.push(querySnapshot.size)
+         console.log("Event data" + this.eventdata)
+      });   
+      await database.collection('events').where("category", "==", "Education").get().then((querySnapshot) => {
+         this.eventdata.push(querySnapshot.size)
+          console.log("Event data" + this.eventdata)
+      });   
+      await database.collection('events').where("category", "==", "Environmental").get().then((querySnapshot) => {
+         this.eventdata.push(querySnapshot.size)
+          console.log("Event data" + this.eventdata)
+      });   
+      await database.collection('events').where("category", "==", "Elderly Care").get().then((querySnapshot) => {
+         this.eventdata.push(querySnapshot.size)
+          console.log("Event data" + this.eventdata)
+      });   
+      await database.collection('events').where("category", "==", "Disabled Care").get().then((querySnapshot) => {
+         this.eventdata.push(querySnapshot.size)
+          console.log("Event data" + this.eventdata)
+      });    
+      console.log("FinalArray" + this.eventdata)
+      this.series = this.eventdata
+     }
   }
 };
 </script>

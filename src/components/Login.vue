@@ -3,6 +3,7 @@
         <form>
             <h3>Sign In</h3>
             <br>
+            <form action="#" @submit.prevent="submit">
             <div class="form-group">
                 <label>Email address:</label>
                 <input type="email"  placeholder="Enter email" v-model="input.username" class="form-control form-control-lg" />
@@ -13,8 +14,8 @@
                 <input type="password" placeholder="Enter password" v-model="input.password" class="form-control form-control-lg" />
             </div>
             <br>
-            <button class="btn btn-dark btn-lg" @click="onSignIn">Sign In</button>
-
+            <button type="submit" class="btn btn-dark btn-lg">Sign In</button>
+</form>
             <p class="dont-have-account text-middle mt-2 mb-4">
                 <router-link id="router-link" to="/register_account" exact>Don't have an account ?</router-link>
             </p>
@@ -40,13 +41,10 @@
             }
         },
         methods: {
-             onSignIn() {
+            submit() {
                 if (this.input.username !== "") {
                     if (this.input.password !== "") {
-                        database.collection('accounts')
-                            .doc(this.input.username)
-                            .get()
-                            .then((doc) => {
+                        database.collection('accounts').doc(this.input.username).get().then(doc => {
                                 if (doc.data()) {
                                     var password = doc.data().password;
                                     if (sha256(this.input.password) === password) {

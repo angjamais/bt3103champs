@@ -7,6 +7,7 @@
         <p> Date of birth:{{info.dob}} </p> <br>
         <p> Account:{{info.acc}} </p> <br>
         <h3>My Events</h3>
+        <br>
         <table>
             <tr>
                 <th width="300px">Event Title</th>
@@ -23,6 +24,7 @@
             </tr>
         </table>
         <h3>Joined events</h3>
+        <br>
         <table>
             <tr>
                 <th width="300px">Event Title</th>
@@ -39,6 +41,7 @@
             </tr>
         </table>
         <h3>My Donations</h3>
+        <br>
         <table>
             <tr>
                 <th width="300px">Beneficiary</th>

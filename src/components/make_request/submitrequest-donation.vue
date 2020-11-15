@@ -3,9 +3,12 @@
         <b-form @submit.prevent="onSubmit">
             <h1>Donation</h1>
 
-            <label>Benefitiary Name: </label>
-            <b-form-input v-model="rqst.benefitiary" id="input-1" type="text" required />
+            <label>Beneficiary Name: </label>
+            <b-form-input v-model="rqst.beneficiary" id="input-1" type="text" required />
 
+                <b-form-group label="Event Category:">
+                <b-form-select id="input-3" v-model="rqst.category" :options="categories" required></b-form-select>
+            </b-form-group>
             <label>Summary: </label>
             <b-form-input v-model="rqst.title" id="input-1" type="text" required placeholder="Title for your event" />
 
@@ -85,6 +88,7 @@
                 rqst: {
                     title: "",
                     description:"",
+                    region: "",
                     location: "",
                     organiser: "",
                     organiser_email: "",
@@ -93,20 +97,25 @@
                     contact: "",
                     event_limit: null,
                     event_type: "donate",
+                    category: "",
                     event_image: [],
                     event_cash: false,
                     event_status: true,
                     event_participants: [],
-                    benefitiary: '',
+                    beneficiary: '',
                     acc_info:'',
                 },
-                recruitment: [{ text: 'Select One', value: null }, 1, 2, 3, 4]
+                recruitment: [{ text: 'Select One', value: null }, 1, 2, 3, 4],
+                categories: [{ text: 'Select One', value: null }, "Community Service", "Elderly Care", "Disabled Care", "Environmental", "Education", "Cleaning", "Others"]
             }
         },
         beforeDestroy() {
             this.clearInterval()
         },
         methods: {
+            updateCategory(e) {
+            this.rqst.category = e.target.value
+            },
             clearInterval() {
                 if (this.interval) {
                     clearInterval(this.interval)
