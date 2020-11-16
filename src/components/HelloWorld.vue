@@ -50,7 +50,7 @@
                 alert("Uploading")
                 const fd = new FormData();
                 fd.append('image', this.selectedFile, this.selectedFile.name)
-                axios.post('http://localhost:5000/bt3103-e1798/us-central1/uploadFile', fd).then((res) => {
+                axios.post('https://us-central1-bt3103-e1798.cloudfunctions.net/uploadFile', fd).then((res) => {
                     console.log(res.data.url)
                 })
 

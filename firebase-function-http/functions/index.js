@@ -52,12 +52,13 @@ exports.uploadFile = functions.https.onRequest((req, res) => {
               const file = data[0];
               const signedUrlData = await file.getSignedUrl({ action: 'read', expires: '03-17-2025' });
               const url = signedUrlData[0];
-          res.status(200).json({
-              message: "It worked!", url:url
-          });
+              res.status(200).json({
+                  message: "It worked!", url: url
+              });
 	return true;
         })
-        .catch(err => {
+          .catch(err => {
+            console.log(err)
           res.status(500).json({
             error: err
           });
