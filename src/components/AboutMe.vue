@@ -12,7 +12,7 @@
                 <br>
             </div>
             <div style="float:right;margin-top:50px;display:flex;flex-direction:column;">
-                <img id="profile_pic" src="https://storage.googleapis.com/bt3103-e1798.appspot.com/esther%40gmail.com?GoogleAccessId=bt3103-e1798%40appspot.gserviceaccount.com&Expires=1742169600&Signature=SRHXzrUHzQzQLVlq%2Bx0qdtZBsdKKHEaAFwdqtlRIn3g%2BsHOS6ywKz5v8CT3tOWkwdABi8lA%2BAGRY1XiyTriJBTPyQH1EK%2Fx3%2BIB7yz8aYQXjm3%2F5SMPWnu61ebEz9YACZrNVqiFia8NHpu5SkmxnAaCGbD%2BWdDOKTb5rez0DD52c7trkW5tG3Rlu2qeiVkI%2BxHUgwWFY750Dtijx%2BkhDBWWya1SybeMUYu6TOW7TXgJbNW87olO0o4IAzaZkXYBmLBrkqJwBdxDNbLUHuUECdwtqaIRMsvldxncYbsM1ATjuukQVF3QHMazGMaICCYmmfmLx4LI3wQYfv5jGsg0feg%3D%3D" />
+                <img id="profile_pic" :src="info.profile_pic" />
                 <br><h2 style="margin-left:-130px">{{info.name}}</h2> 
             </div>
         </div>
@@ -27,8 +27,8 @@
                 <td width="130px">{{e.type}}</td>
                 <td width="80px" v-if="e.status">Ongoing</td>
                 <td width="80px" v-else>Ended</td>
-                <button v-on:click="redirectEvent(e.id)">Go to event</button>
-                <button v-on:click="archiveEvent(e.id, e.status)">Achieve Event</button>
+                <button v-on:click="redirectEvent(e.id, e.type)">Go to event</button>
+                <button v-on:click="archiveEvent(e.id, e.status)">Archieve Event</button>
             </tr>
         </table>
         <h3>Joined events</h3>
@@ -44,7 +44,7 @@
                 <td width="130px">{{e.type}}</td>
                 <td width="80px" v-if="e.status">Ongoing</td>
                 <td width="80px" v-else>Ended</td>
-                <button @click="redirectEvent(e.id, 'donate')">Go to event</button>
+                <button @click="redirectEvent(e.id, e.type)">Go to event</button>
                 <button v-on:click="quitEvent(e.id)">Quit event</button>
             </tr>
         </table>
@@ -100,7 +100,6 @@
                 } 
             },
             redirectEvent(eventID, type) {
-                alert(type + "BLABLA")
                 if (type == "donate") {
                     this.$router.push({ name: 'signup-donate', params: { eventID: eventID } })
                 } else {
@@ -119,7 +118,7 @@
             },
             getMyEvent(eventID) {
                 database.collection("events").doc(eventID).get().then(doc => {
-                        this.my_events.push({ id: eventID, title: doc.data().title, type: doc.data().event_type, status: doc.data().event_status })
+                    this.my_events.push({ id: eventID, title: doc.data().title, type: doc.data().event_type, status: doc.data().event_status })
                 })
             },
             getPartEvent(eventID) {
@@ -145,10 +144,11 @@
                         this.info.dob = info.dob;
                         this.info.acc = username;
                         this.events_raw = info.events;
-                        this.profile_pic = info.profile_pic_url;
+                        this.info.profile_pic = info.profile_pic_url;
                         info.my_events.forEach((e) => this.getMyEvent(e));
                         info.events.forEach((e) => this.getPartEvent(e));
                     })
+                
             }
         },
         mounted() {

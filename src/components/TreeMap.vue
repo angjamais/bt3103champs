@@ -2,7 +2,7 @@
   <div id="chart">
     <apexcharts
       type="treemap"
-      width="90%"
+      width="100%"
       :options="chartOptions"
       :series="series"
     ></apexcharts>
