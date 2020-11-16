@@ -85,7 +85,6 @@
   display: flex;
   flex-direction: row;
   padding-top: 10px;
-  margin-top:-60px;
 }
 #logo {
   height: 90px;
