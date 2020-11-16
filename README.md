@@ -5,7 +5,7 @@
 
 iHelp is a web application that connects volunteers and donors with underprivileged households and individuals in Singapore. Due to Covid-19 safe distancing measures, many community services initiatives are suspended due to logitics and manpower limitations. The web application aims to streamline and automate the process of of matching this two groups during the unprecedented times. 
 
-Visit our web application here *to insert the deployed link here*
+Visit our web application [here](https://bt3103-e1798.web.app) 
 
 ### Team members
 - Ang Jamais
