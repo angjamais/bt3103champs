@@ -1,20 +1,20 @@
 <template>
-<div class ='hello'>
+<div id="main">
     <h1> We appreciate your help! </h1>
-    <h2>We are currently raising funds for these active projects and households</h2>
+    <h2>Here are some of our beneficiaries, click on their pictures to find out more</h2>
     <div class="donate">
     <div class="donate-panel"
          v-for="photo in photos"
          :key="photo.id">
-      <img :src="thumbUrl(photo.filename)"></div></div>
-      <DonateButton></DonateButton>
+        <router-link :to="`/photo/${photo.id}`">
+        <img :src="thumbUrl(photo.filename)">
+      </router-link></div></div>
       <br>
-    </div>
+</div>
 </template>
 
 <script>
 import photos from '../photos.json';
-import DonateButton from '../components/DonateButton.vue'
 export default {
   name: 'donate',
   data() {
@@ -31,15 +31,17 @@ export default {
       return require(`@/components/images/thumbnails/${filename}`);
     },
   },
-  components: {
-      'DonateButton': DonateButton
-  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
+    #main{
+        width:100%;
+        height: 100%;
+    }
   .donate {
+    width: 100%;
     display: grid;
     grid-template-columns: auto auto auto;
     column-gap: 0rem;
@@ -59,16 +61,19 @@ export default {
 h1 {
     font-weight: heavy;
     margin-bottom: 0;
+    margin-top: 2%;
     font-size: 30px;
+    text-align: center;
+    width: 100%;
 }
 h2 {
+    width: 100%;
     font-weight: normal;
     font-size: 20px;
     margin: 0;
     padding-block-end: 0%;
-}
-h3 {
-  margin: 40px 0 0;
+    text-align: center;
+
 }
 a {
   color: #42b983;

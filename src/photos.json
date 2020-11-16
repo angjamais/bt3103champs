@@ -3,84 +3,60 @@
       "id": 0,
       "title": null,
       "filename": "needy1.jpg",
-      "location": "Fraser Island Beach Track, Fraser Island, Australia",
-      "source": {
-        "name": "Unsplash",
-        "url": "https://unsplash.com"
-      },
+      "story": "Auntie Lee works part time as a cleaner at a hawker center near her house. She is also currently the primary caregiver of her aging husband and 42 year old mentally disabled son. Thanks to iHelp's volunteers Auntie Lee is able to recieve some additional financial aid to ease her financial burden.",
       "photographer": {
-        "name": "Andreas Dress",
-        "url": "https://unsplash.com/@picsbydress"
+        "name": "Auntie Lee Yan",
+        "url": "http://localhost:8080/donate_form"
       }
     },
     {
       "id": 1,
       "title": null,
       "filename": "needy2.jpg",
-      "location": null,
-      "source": {
-        "name": "Unsplash",
-        "url": "https://unsplash.com"
-      },
+      "story": "Uncle Tim was the sole bread winner for his house hold and recently lost his job due to the Covid-19 pandemic. His wife is currently on expensive treatment for her injured knees sustatined during a past accident. With iHelp's volunteers, their family is able to pull through during the circuit breaker period.",
       "photographer": {
-        "name": "who?du!nelson",
-        "url": "https://unsplash.com/@whodunelson"
+        "name": "Uncle Tim and family",
+        "url": "http://localhost:8080/donate_form"
       }
     },
     {
       "id": 2,
       "title": null,
       "filename": "needy3.jpg",
-      "location": "Ljubljana, Slovenia",
-      "source": {
-        "name": "Unsplash",
-        "url": "https://unsplash.com"
-      },
+      "story": "John and Andrew enjoy enrichment classes at their neighbourhood community center. Sunshine Centre is a non-profit organisation that provides after school student care for lower income families. Thanks to the donation from iHelp's volunteers, students like John and Andrew are able to continue with their lessons at Sunshine Centre.",
       "photographer": {
-        "name": "Klara Avsenik",
-        "url": "https://unsplash.com/@curryandlove"
+        "name": "Sunshine Center",
+        "url": "http://localhost:8080/donate_form"
       }
     },
     {
       "id": 3,
       "title": null,
       "filename": "needy4.jpg",
-      "location": "The Broad, Los Angeles, United States of America",
-      "source": {
-        "name": "Unsplash",
-        "url": "https://unsplash.com"
-      },
+      "story": "Uncle Ahmad recently lost his job due to the Covid-19 pandemic and has 4 young children to feed. iHelp's volunteers visit Uncle Ahmad and his family to help with the chores and playing with his children.",
       "photographer": {
-        "name": "Brayden Law",
-        "url": "https://unsplash.com/@braydenlaw"
+        "name": "Uncle Ahmad",
+        "url": "http://localhost:8080/donate_form"
       }
     },
     {
       "id": 4,
       "title": null,
       "filename": "needy5.jpg",
-      "location": null,
-      "source": {
-        "name": "Unsplash",
-        "url": "https://unsplash.com"
-      },
+      "story": "Uncle Hock has relied on simple part-time jobs to earn a living however due to the Covid-19 pandemic he has been unemployed for 4 months and has been using up the last of his savings. Thanks to iHelp's volunteers, Uncle Hock has been able to pull through during this tough period.",
       "photographer": {
-        "name": "Yunming Wang",
-        "url": "https://unsplash.com/@ymwang"
+        "name": "Uncle Hock",
+        "url": "http://localhost:8080/donate_form"
       }
     },
     {
       "id": 5,
       "title": null,
       "filename": "needy6.jpg",
-      "location": null,
-      "source": {
-        "name": "Unsplash",
-        "url": "https://unsplash.com"
-      },
+      "story": "Uncle Tim runs a small traditional business passed down from his father. However due to the Covid-19 pandemic, his business has been experiencing losses for 6 months.",
       "photographer": {
-        "name": "Greg Bulla",
-        "url": "https://unsplash.com/@gregbulla"
+        "name": "Uncle Tim",
+        "url": "http://localhost:8080/donate_form"
       }
     }
   ]
