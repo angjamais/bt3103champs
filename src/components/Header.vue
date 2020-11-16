@@ -1,12 +1,10 @@
 <template>
-  <div>
+  <div id="root">
     <header id="panel">
       <div id="spacing"></div>
       <img id="logo" src="../assets/iHelp.png" />
       <h1 id="slogan">iHelp</h1>
       <div id="spacing-middle"></div>
-      
-
       <router-link to="/personal" exact
         ><img id="logo-icon" src="../assets/user-profile.png" />
       </router-link>
@@ -77,14 +75,16 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#root {
+  margin: 0px;
+}
 #panel {
   width:100%;
   background: rgb(193, 237, 121);
   height: 100px;
-  margin-top: -50px;
-  padding: 10px;
   display: flex;
   flex-direction: row;
+  padding-top: 10px;
 }
 #logo {
   height: 90px;
