@@ -8,10 +8,8 @@
                 <h6>{{msg}}</h6>
 
             </div>
-
-
         </BCard>
-        <button style="width:40px;"><img src="../../assets/left-arrow.png" style="width:50px;height:50px;margin-left:10px; margin-top:50px;" v-on:click="redirect()" /></button>
+        <button style="width:40px;"><img src="../../assets/left-arrow.png" style="width:50px;height:50px;margin-left:10px;" v-on:click="redirect()" /></button>
     </div>
 </template>
 
@@ -41,7 +39,6 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     #cards {
-        width: 1500px;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -52,5 +49,6 @@
     }
     button{
         background-color:transparent;
+        border-color: transparent;
     }
 </style>

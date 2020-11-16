@@ -1,5 +1,5 @@
 <template>
-    <div style="display:flex; flex-direction:row; align-self:center;">
+    <div style="display:flex; flex-direction:row; align-self:center; padding: 10px">
     <div style="display:flex; flex-direction:column; justify-content: center;">
     <div style="background-color:transparent; border-color:transparent;" class="card" v-bind:key="item" v-for="item in items">
         <Card :title="item.title" :msg="item.msg" :type="item.type"/>
@@ -20,8 +20,8 @@
             return {
                 items: [
                     { title: "Donation", msg: "Raise fund for individuals", type: "donate" },
-                    { title: "Recruitment", msg: "Find your voluteers", type: "recruitment" },
-                    { title: "Online", msg: "Help without been physically present", type: "online" },
+                    { title: "Recruitment", msg: "Find your volunteers", type: "recruitment" },
+                    { title: "Online", msg: "Help without being physically present", type: "online" },
                     { title: "Request", msg: "Make a help request", type: "request" },
                 ]
             }
