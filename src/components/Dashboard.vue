@@ -1,6 +1,6 @@
 <template>
 
-        <b-container fluid>
+        <b-container fluid style="padding: 10px">
             <b-row>
                 <b-col cols=6><BarChart></BarChart></b-col>
                 <b-col cols=6><GradientLine></GradientLine>

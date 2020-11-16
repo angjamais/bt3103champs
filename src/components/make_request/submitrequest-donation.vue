@@ -1,37 +1,50 @@
 <template>
-    <div class="template">
+    <b-container fluid id="root">
         <b-form @submit.prevent="onSubmit">
             <h1>Donation</h1>
-
-            <label>Beneficiary Name: </label>
+           <b-row  class="template">
+           <b-col cols=6>
+               
+                <label>Beneficiary Name: </label>
             <b-form-input v-model="rqst.beneficiary" id="input-1" type="text" required />
-
-            <b-form-group label="Event Category:">
-                <b-form-select id="input-3" v-model="rqst.category" :options="categories" required></b-form-select>
-            </b-form-group>
             <label>Summary: </label>
             <b-form-input v-model="rqst.title" id="input-1" type="text" required placeholder="Title for your event" />
+           </b-col>
 
-            <label>Description: </label>
+           <b-col cols=6>
+                <label>Description: </label>
             <BFormTextarea id="textarea" v-model="rqst.description" placeholder="Enter Event Description" row="3" max-row="6"></BFormTextarea>
 
             <label>Bank account/Paynow/Paylah: </label>
             <BFormTextarea id="textarea" v-model="rqst.acc_info" placeholder="Please note down the reference number when you transfer" row="2" max-row="6"></BFormTextarea>
-
-            <b-form-group label="Image Upload" label-for="form-image" description="*Image of the event can increase the chance of getting helpers" style="margin-top:10px;">
+     </b-col>
+           </b-row>
+                      <b-row>
+               <b-col cols=6>
+                      <b-form-group  label="Event Category:">
+                <b-form-select id="input-3" v-model="rqst.category" :options="categories" required></b-form-select>
+            </b-form-group>
+               </b-col>
+                 <b-col cols=6>
+                    <b-form-group label="Image Upload" label-for="form-image" description="*Image of the event can increase the chance of getting helpers" style="margin-top:10px;">
                 <b-input-group>
                     <input type="file" @change="onFileSelected">
                 </b-input-group>
             </b-form-group>
+               </b-col>
+           </b-row>
 
             <h1>Fill in the particulars of the recipient</h1>
-
+  <b-row>
+                <b-col cols=6>
             <label>Initiater name: </label>
             <b-form-input v-model="rqst.organiser" id="input-1" type="text" required />
-
+                </b-col>
+                <b-col cols=6>
             <label>Initiater Contact: </label>
             <b-form-input v-model="rqst.contact" required />
-
+                </b-col>
+  </b-row>
             <div class="d-flex justify-content-center">
                 <b-button style="margin-top:10px" region-fragment="submit" type="submit" :disabled="busy">Submit</b-button>
             </div>
@@ -67,7 +80,7 @@
             </b-overlay>
 
         </b-form>
-    </div>
+    </b-container>
 </template>
 
 <script>
@@ -185,11 +198,13 @@
 </script>
 
 <style scoped>
-    .form-group {
+    #root {
+        height: 80vh;
+        margin-top: 5%;
+        width: 80%
     }
-
     .template{
-        justify-content:center;
+        padding: 10px;
     }
 
     h3 {
