@@ -1,9 +1,9 @@
 <template>
     <div>
-        <br>
-        <br>
-        <div id='left'>
-            <h1 style = 'padding: 10px'> ABOUT US </h1>
+        <b-container fluid id="root">
+            <b-row>
+                <b-col xs=12 sm=6>
+                <h1 style='display:flex;justify-content:center'> ABOUT US </h1>
             <p style = 'padding: 10px; padding-right: 30px; font-size: 14px'> 
                 Due to lockdown practices, social distancing and restrictions on gathering for COVID-19, 
                 jobs were lost and some people lost their income. Residents from low income neighbourhood 
@@ -18,14 +18,14 @@
                 help-seekers with help-providers. Join us today as a volunteer,  or a needy household. 
                 Voice out your need here, and we are the bridge that connects kind souls in Singapore. <br><br>
             </p>
-            <br>
-        </div>
-        <img id = 'right' src = '../assets/Home page pic.jpg' alt = 'iHelp Home'>
-        <br>
-        <p style='color: white'>     linebreak     </p>
-        <router-link id="router-link" to="/join_us" exact> <custbtn> </custbtn> </router-link> 
-        <br><br>
-    </div>    
+                </b-col>
+       
+      <b-col xs=12 sm=6>
+            <img  src = '../assets/Home page pic.jpg' alt = 'iHelp Home'></b-col>
+            </b-row>
+             <b-row id="router-link"><router-link to="/join_us" exact> <custbtn> </custbtn> </router-link> </b-row>
+        </b-container>
+   </div>    
 </template>
 
 <script>
@@ -39,22 +39,22 @@ export default {
 </script>
 
 <style scoped>
-    #left {
-        float: left;
-        width: 30%;
-        text-align: justify;
-        height: 400px;
-        margin-left:20%;
-    }
-    #right {
-        float: right;
-        width: 30%;
-        height: 400px;
-        margin-right:20%;
+    #root {
+        width: 80%;
+        margin-top:5%;
+        height: 100%;
     }
     img {
         object-fit: cover;
-        height: 300px
+        height: 300px;
+        width: 400px;
+    }
+
+    #router-link {
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 20px;
     }
 
 </style>
