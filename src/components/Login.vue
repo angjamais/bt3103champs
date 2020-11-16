@@ -62,10 +62,10 @@
                                 }
                             })
                     } else {
-                        alert("Hi error")
+                        alert("Please enter password")
                     }
                 } else {
-                    alert("Hi error2")
+                    alert("Please enter username")
                 }
             }
         }

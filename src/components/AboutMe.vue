@@ -1,13 +1,21 @@
 <template>
     <div id="left">
-        <h3> About Me </h3> <br>
-        <p> Name: {{info.name}}</p> <br>
-        <p> Gender: {{info.gender}}</p> <br>
-        <p> Phone: {{info.phone}}</p> <br>
-        <p> Date of birth:{{info.dob}} </p> <br>
-        <p> Account:{{info.acc}} </p> <br>
-        <h3>My Events</h3>
-        <br>
+        <div id="information">
+            <div style="float:left">
+                <h3> About Me </h3> <br>
+                <p> Name: {{info.name}}</p> <br>
+                <p> Gender: {{info.gender}}</p> <br>
+                <p> Phone: {{info.phone}}</p> <br>
+                <p> Date of birth:{{info.dob}} </p> <br>
+                <p> Account:{{info.acc}} </p> <br>
+                <h3>My Events</h3>
+                <br>
+            </div>
+            <div style="float:right;margin-top:50px;display:flex;flex-direction:column;">
+                <img id="profile_pic" src="https://storage.googleapis.com/bt3103-e1798.appspot.com/esther%40gmail.com?GoogleAccessId=bt3103-e1798%40appspot.gserviceaccount.com&Expires=1742169600&Signature=SRHXzrUHzQzQLVlq%2Bx0qdtZBsdKKHEaAFwdqtlRIn3g%2BsHOS6ywKz5v8CT3tOWkwdABi8lA%2BAGRY1XiyTriJBTPyQH1EK%2Fx3%2BIB7yz8aYQXjm3%2F5SMPWnu61ebEz9YACZrNVqiFia8NHpu5SkmxnAaCGbD%2BWdDOKTb5rez0DD52c7trkW5tG3Rlu2qeiVkI%2BxHUgwWFY750Dtijx%2BkhDBWWya1SybeMUYu6TOW7TXgJbNW87olO0o4IAzaZkXYBmLBrkqJwBdxDNbLUHuUECdwtqaIRMsvldxncYbsM1ATjuukQVF3QHMazGMaICCYmmfmLx4LI3wQYfv5jGsg0feg%3D%3D" />
+                <br><h2 style="margin-left:-130px">{{info.name}}</h2> 
+            </div>
+        </div>
         <table>
             <tr>
                 <th width="300px">Event Title</th>
@@ -69,6 +77,7 @@
                     phone: "",
                     dob: "",
                     acc: "",
+                    profile_pic:"",
                 }, 
                 my_events: [],
                 events: [],
@@ -136,6 +145,7 @@
                         this.info.dob = info.dob;
                         this.info.acc = username;
                         this.events_raw = info.events;
+                        this.profile_pic = info.profile_pic_url;
                         info.my_events.forEach((e) => this.getMyEvent(e));
                         info.events.forEach((e) => this.getPartEvent(e));
                     })
@@ -179,6 +189,23 @@
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
+    }
+    #profile_pic {
+        height: 200px;
+        width: 200px;
+        overflow: hidden;
+        border-radius: 500px;
+        justify-content: center;
+        background-color: white;
+        color: cornflowerblue;
+        box-shadow: 0 0 8px 3px #B8B8B8;
+        display: flex !important;
+        align-items: center;
+        margin: -10px 0px 0px -180px;
+    }
+
+    .cropped img {
+        margin: -10px 0px 0px -180px;
     }
 
 </style>
