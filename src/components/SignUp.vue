@@ -20,13 +20,15 @@
                 </b-col>
                 <b-col sm="4">
                     <br>
-                    <b-row align-h="left">
+                    <b-row>
+                        <img id="event_pic" :src="rqst.event_pic" />
+                    </b-row>
+                    <b-row align-h="center">
                         <SignUpButton></SignUpButton>
-                        <p align="left">
-                            Person of Contact: {{rqst.organiser}}<br />
+                        <p align="left" style="margin-left: 50%; width:1000px">
+                            Person of Contact: <br />{{rqst.organiser}}<br />
                             Contact Number: {{rqst.contact}}<br />
                             Event Status: Active<br />
-                            Slots: {{rqst.slots}}
                         </p>
                     </b-row>
                 </b-col>
@@ -110,6 +112,7 @@
                     beneficiary: "",
                     event_participants: [],
                     slots: "",
+                    event_pic:"",
                 },
             };
         },
@@ -190,6 +193,7 @@
                         beneficiary: '',
                         event_participants: data.event_participants,
                         slots: s,
+                        event_pic: data.event_pic,
                     }
                     this.rqst = rqst;
                 })
@@ -258,6 +262,21 @@
     p {
         text-align: center;
         line-height: 1.5;
+    }
+
+    #event_pic {
+        height: 250px;
+        width: 300px;
+        object-fit: cover;
+        border-radius: 10px;
+        justify-content: center;
+        background-color: white;
+        color: cornflowerblue;
+        box-shadow: 0 0 8px 3px #B8B8B8;
+        display: flex !important;
+        align-items: center;
+        margin: -10px 0px 0px -180px;
+        margin-left: 50%;
     }
 
     .button {
