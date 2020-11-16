@@ -163,7 +163,7 @@
                 // Act a bit
                 this.clearInterval()
                 var username = localStorage.getItem("username")
-                this.organiser_email = username;
+                this.rqst.organiser_email = username;
                 var d = new Date();
                 await this.onUpload(this.organiser_email + d)
                 database.collection('events').add(this.rqst).then((doc) => {
