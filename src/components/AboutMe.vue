@@ -12,7 +12,7 @@
                 <br>
             </div>
             <div style="float:right;margin-top:50px;display:flex;flex-direction:column;">
-                <img id="profile_pic" src="https://storage.googleapis.com/bt3103-e1798.appspot.com/esther%40gmail.com?GoogleAccessId=bt3103-e1798%40appspot.gserviceaccount.com&Expires=1742169600&Signature=SRHXzrUHzQzQLVlq%2Bx0qdtZBsdKKHEaAFwdqtlRIn3g%2BsHOS6ywKz5v8CT3tOWkwdABi8lA%2BAGRY1XiyTriJBTPyQH1EK%2Fx3%2BIB7yz8aYQXjm3%2F5SMPWnu61ebEz9YACZrNVqiFia8NHpu5SkmxnAaCGbD%2BWdDOKTb5rez0DD52c7trkW5tG3Rlu2qeiVkI%2BxHUgwWFY750Dtijx%2BkhDBWWya1SybeMUYu6TOW7TXgJbNW87olO0o4IAzaZkXYBmLBrkqJwBdxDNbLUHuUECdwtqaIRMsvldxncYbsM1ATjuukQVF3QHMazGMaICCYmmfmLx4LI3wQYfv5jGsg0feg%3D%3D" />
+                <img id="profile_pic" :src="info.profile_pic" />
                 <br><h2 style="margin-left:-130px">{{info.name}}</h2> 
             </div>
         </div>
@@ -100,7 +100,6 @@
                 } 
             },
             redirectEvent(eventID, type) {
-                alert(type + "BLABLA")
                 if (type == "donate") {
                     this.$router.push({ name: 'signup-donate', params: { eventID: eventID } })
                 } else {
@@ -145,10 +144,11 @@
                         this.info.dob = info.dob;
                         this.info.acc = username;
                         this.events_raw = info.events;
-                        this.profile_pic = info.profile_pic_url;
+                        this.info.profile_pic = info.profile_pic_url;
                         info.my_events.forEach((e) => this.getMyEvent(e));
                         info.events.forEach((e) => this.getPartEvent(e));
                     })
+                
             }
         },
         mounted() {
