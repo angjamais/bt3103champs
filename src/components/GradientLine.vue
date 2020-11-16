@@ -26,7 +26,7 @@ export default {
           eventdata: [],
           series: [{
             name: 'Events',
-            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
           }],
           chartOptions: {
             chart: {
@@ -39,7 +39,7 @@ export default {
             },
             xaxis: {
               //type: 'datetime',
-              categories: ['1/11/2020', '2/11/2020', '3/11/2020', '4/11/2020', '5/11/2020', '6/11/2020', '7/11/2020', '8/11/2020', '9/11/2020', '10/11/2020', '11/11/2020', '12/11/2020'],
+              categories: ['1/11/2020', '2/11/2020', '3/11/2020', '4/11/2020', '5/11/2020', '6/11/2020', '7/11/2020', '8/11/2020', '9/11/2020', '10/11/2020', '11/11/2020', '12/11/2020', '13/11/2020'],
               //tickAmount: 10,
               
             },
@@ -103,31 +103,32 @@ export default {
           "7": 0,
           "8": 0,
           "9": 0,
+          "10": 0,
           "11": 0,
-          "18": 0,
-          "20": 0
+          "12": 0,
+          "13": 0
         }
+        var eventid;
         await database.collection('accounts').doc(username).get().then(doc => {
-
-          var events = doc.data().events
-          console.log(events.length)
-          var eventid = doc.data().my_events
+          eventid = doc.data().my_events
+          console.log("My events: " + eventid.length)
+          })
           eventid.forEach(id => {
             database.collection('events').doc(id).get().then(doc => {
             console.log("Fetch event data")
             console.log(doc.data().date.substring(8))
             var day = doc.data().date.substring(8)
             if (day.length != 0) {
-            dates[day] += 1
-            //match day to dictionary
-            console.log(Object.values(dates))
+            var day1 = parseInt(day)
+            dates[day1] += 1
+            console.log("My value is " + dates[day1])
             this.series= [{
             name: 'Events',
             data: Object.values(dates)
           }]
             }
           })
-          })
+            
       })
       }
   },
