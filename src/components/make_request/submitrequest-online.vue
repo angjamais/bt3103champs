@@ -1,14 +1,23 @@
 <template>
-    <div class="template">
+    <b-container fluid id="root">
         <b-form @submit.prevent="onSubmit">
-            <h1>Fill in you event details here</h1>
+            <h1>Fill in your event details here</h1>
+            <b-row>
+                <b-col cols=6>
             <label>Event Title: </label>
             <b-form-input v-model="rqst.title" id="input-1" type="text" required placeholder="Title for your event" />
-            <b-form-group label="Event Category:">
-                <b-form-select id="input-3" v-model="rqst.category" :options="categories" required></b-form-select>
-            </b-form-group>
-            <label>Description: </label>
+              <label>Description: </label>
             <BFormTextarea id="textarea" v-model="rqst.description" placeholder="Enter Event Description" row="3" max-row="6"></BFormTextarea>
+                </b-col>
+            <b-col cols=6>
+            <b-form-group style="width: 500px" label="Event Category:">
+                <b-form-select v-model="rqst.category" :options="categories" required></b-form-select>
+            </b-form-group>
+                      <b-form-group style="width: 500px" label="Recruiting Limit:" description="*We limit participants of each event to be 5(including organiser) for safe distancing concerns">
+                <b-form-select v-model="rqst.event_limit" :options="recruitment" required></b-form-select>
+            </b-form-group>
+            </b-col>
+            </b-row>
 
             <b-form-group label="Image Upload" label-for="form-image" description="*Image of the event can increase the chance of getting helpers" style="margin-top:10px;">
                 <b-input-group>
@@ -16,15 +25,11 @@
                 </b-input-group>
             </b-form-group>
 
-            <b-form-group label="Recruiting Limit:" description="*We limit participants of each event to be 5(including organiser) for safe distancing concerns">
-                <b-form-select id="input-3" v-model="rqst.event_limit" :options="recruitment" required></b-form-select>
-            </b-form-group>
-
             <b-form-group label="Event Date and Time:">
                 <b-container class="bv-example-row">
                     <b-row>
                         <b-col><b-form-datepicker v-model="rqst.date"></b-form-datepicker></b-col>
-                        <b-col><b-form-timepicker v-model="rqst.time" style="margin-top:10px;"></b-form-timepicker></b-col>
+                        <b-col><b-form-timepicker v-model="rqst.time"></b-form-timepicker></b-col>
                     </b-row>
                 </b-container>
             </b-form-group>
@@ -32,15 +37,19 @@
             <b-form-group description="Please check this box if your event requires money">
                 <b-form-checkbox v-model="rqst.cash" value="true" unchecked-value="false">Monetary Event</b-form-checkbox>
             </b-form-group>
-
             <h1>Fill in your particulars here</h1>
+            <b-row>
+                <b-col cols=6>
             <label>Organiser Name: </label>
             <b-form-input v-model="rqst.organiser" id="input-1" type="text" required />
+                </b-col>
+                <b-col cols=6>
             <label>Contact: </label>
             <b-form-input v-model="rqst.contact" required />
-
+                </b-col>
+            </b-row>
             <div class="d-flex justify-content-center">
-                <b-button style="margin-top:10px" region-fragment="submit" type="submit" :disabled="busy">Submit</b-button>
+                <b-button style="margin-top:20px" region-fragment="submit" type="submit" :disabled="busy">Submit</b-button>
             </div>
 
             <b-overlay :show="busy" no-wrap @shown="onShown" @hidden="onHidden">
@@ -74,7 +83,7 @@
             </b-overlay>
 
         </b-form>
-    </div>
+    </b-container>
 </template>
 
 <script>
@@ -190,11 +199,13 @@
 </script>
 
 <style scoped>
-    .form-group {
+    #root {
+        margin-top: 5%;
+        width: 80%;
+        margin-bottom: 5%
     }
-
     .template{
-        justify-content:center;
+        padding: 10px;
     }
 
     h3 {

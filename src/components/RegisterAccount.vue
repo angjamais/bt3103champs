@@ -1,87 +1,86 @@
 <template>
-    <div>
-        <b-form @reset="onReset" style=" margin-top: 25px;">
-            <b-form-group label="Full Name:" id="input-group">
-                <b-col>
-                    <b-col><b-form-input id="input-1" v-model="acc.name" type="text" required placeholder="Enter Full Name" /></b-col>
-                </b-col>
+    <b-container fluid id="root">
+        <b-form @reset="onReset">
+            <b-row>
+            <b-col cols=6>
+                 <b-form-group label="Full Name:">
+               <b-form-input v-model="acc.name" type="text" required placeholder="Enter Full Name" />
             </b-form-group>
 
-            <b-form-group label="Email:" id="input-group" description="*We'll never share your email with anyone else.">
-                <b-col>
-                    <b-col><b-form-input id="input-1" @change="changeStatus()" v-model="acc.username" type="email" required placeholder="Enter Email" /></b-col>
-                </b-col>
-            </b-form-group>
-
-            <b-form-group label="Contact:" id="input-group">
-                <b-col>
-                    <b-col><b-form-input id="input-1" v-model="acc.contact" type="text" required placeholder="Enter Valid Contact" /></b-col>
-                </b-col>
-            </b-form-group>
-
-            <b-form-group id="input-group" label="Gender:" label-for="input-3">
+            <b-form-group  label="Gender:" label-for="input-3">
                 <b-form-select id="input-3"
                                v-model="acc.gender"
                                :options="genders"
                                required></b-form-select>
             </b-form-group>
 
-            <b-form-group label="Date of Birth:" id="input-group">
-                <b-col>
-                    <b-col><b-form-datepicker id="input-1" v-model="acc.dob" type="text" required></b-form-datepicker></b-col>
-                </b-col>
+            <b-form-group label="Email:" description="*We'll never share your email with anyone else.">
+                <b-form-input @change="changeStatus()" v-model="acc.username" type="email" required placeholder="Enter Email" />
+           
             </b-form-group>
-
-            <b-form-group label="Address:" id="input-group">
-                <b-col>
-                    <b-col><b-form-input id="input-1" v-model="acc.address" type="text" required placeholder="Enter Valid Address" /></b-col>
-                </b-col>
+            </b-col>
+            <b-col cols=6>
+                 <b-form-group label="Contact:">
+                <b-form-input v-model="acc.contact" type="text" required placeholder="Enter Valid Contact" />
             </b-form-group>
-
-            <b-form-group label="Password:" id="input-group">
-                <b-col>
-                    <b-col><b-form-input id="input-1" v-model="acc.password" type="password" required placeholder="Password" /></b-col>
-                </b-col>
+             <b-form-group label="Address:">
+                 <b-form-input v-model="acc.address" type="text" required placeholder="Enter Valid Address" />
+                
             </b-form-group>
-
-            <b-form-group label="Confirm Password:" id="input-group">
-                <b-col>
-                    <b-col><b-form-input @change="changeStatus()" id="input-1" v-model="acc.confirmpassword" type="password" required placeholder="Confirm Your Password" /></b-col>
-                    <p style="color:red;font-size:3px;" v-show="this.pwMatch">*passwords do not match</p>
-                </b-col>
-            </b-form-group>
-            <div id="emergency">
-                <b-form-group label="Emergency Contact:" id="input-group">
-                    <b-col>
-                        <b-col><b-form-input id="input-1" v-model="acc.emergency_contact" type="text" required /></b-col>
-                    </b-col>
-                </b-form-group>
-
-                <b-form-group label="Emergency Contact Name:" id="input-group">
-                    <b-col>
-                        <b-col><b-form-input id="input-1" v-model="acc.emergency_contact_name" type="text" /></b-col>
-                    </b-col>
-                </b-form-group>
-                <b-form-group label="Relationship:" id="input-group">
-                    <b-col>
-                        <b-col><b-form-input id="input-1" v-model="acc.emergency_contact_relationship" type="text" /></b-col>
-                    </b-col>
-                </b-form-group>
-            </div>
-
-            <b-form-group id="input-group" label="Occupation:" label-for="input-3">
+  <b-form-group id="input-group" label="Occupation:" label-for="input-3">
                 <b-form-select id="input-3"
                                v-model="acc.occupation"
                                :options="occupations"
                                required></b-form-select>
             </b-form-group>
+            </b-col>   
+           
+            </b-row>
+             <b-row>
+            <b-col cols=6>
+            </b-col>
+            <b-col cols=6>
+            </b-col>
+             </b-row>
+                <b-row>
+               <b-col cols=6>
+                        <b-form-group label="Password:" id="input-group">
+                <b-form-input id="input-1" v-model="acc.password" type="password" required placeholder="Password" />
+             
+            </b-form-group>
+               </b-col>
+            <b-col cols=6>
+            <b-form-group label="Confirm Password:" id="input-group">
+                
+                    <b-form-input @change="changeStatus()" id="input-1" v-model="acc.confirmpassword" type="password" required placeholder="Confirm Your Password" />
+                    <p style="color:red;font-size:3px;" v-show="this.pwMatch">*passwords do not match</p>
+                
+            </b-form-group></b-col></b-row>
+            <b-row>
+                <b-col cols=6>
+                <b-form-group label="Emergency Contact:" id="input-group">
+                    <b-form-input id="input-1" v-model="acc.emergency_contact" type="text" required />
+                </b-form-group>
 
-            <b-form-group label="Profile Picture" label-for="form-image" description="Upload a picture of yourself" style="margin-top:10px;">
-                <b-input-group>
+                <b-form-group label="Emergency Contact Name:" id="input-group">
+                    <b-form-input id="input-1" v-model="acc.emergency_contact_name" type="text" />
+                </b-form-group>
+                </b-col><b-col cols=6>
+                <b-form-group label="Relationship:" id="input-group">
+                    <b-form-input id="input-1" v-model="acc.emergency_contact_relationship" type="text" />
+                </b-form-group>
+                 <b-form-group label="Date of Birth:" id="input-group">
+                <b-form-datepicker id="input-1" v-model="acc.dob" type="text" required></b-form-datepicker>
+            </b-form-group>
+          
+                </b-col></b-row>
+                  <div style="display:flex; justify-content:center">
+            <b-form-group label="Profile Picture" label-for="form-image" description="Upload a picture of yourself" style="margin:auto">
+             
+                    <b-input-group>
                     <input type="file" @change="onFileSelected">
                 </b-input-group>
-            </b-form-group>
-
+            </b-form-group></div>
             <b-form-group id="input-group-4">
                 <b-form-checkbox-group id="checkboxes-4">
                     <b-form-checkbox value="me">Subscribe to our newsletters</b-form-checkbox>
@@ -91,7 +90,7 @@
             <b-button :disabled="subPermit" variant="primary" v-on:click="addAccount()">Submit</b-button>
             <b-button type="reset" variant="danger">Reset</b-button>
         </b-form>
-    </div>
+    </b-container>
 </template>
 
 <script>
@@ -221,22 +220,18 @@
 </script>
 
 <style>
-    .form-group {
-        margin-left: 33%;
-        margin-right: 33%;
+    #root {
+        margin-top: 5%;
+        margin-bottom: 5%;
+        /*padding-left: 10%;
+        padding-right: 10%;*/
     }
-
-    #input-group {
-        justify-content: center;
-       
-    }
-
-    #input-1{
-        width:100%;
+    .template{
+        padding: 10px;
     }
 
     label{
-        font-size:15px;
+        font-size:18px;
     }
 
     #emergency{
