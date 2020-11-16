@@ -120,7 +120,6 @@
                     // do some error handling
                 },
                 donate() {
-                    alert(this.rqst.acc_info)
                     this.$router.push({ name: 'donate', params: { beneficiary: this.rqst.benefitiary, acc: this.rqst.acc_info, eventID: this.eventID} })
                 }
 
