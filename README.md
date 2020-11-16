@@ -1,6 +1,6 @@
 # bt3103champs
 
-##iHelp
+## iHelp
 <p align="center">
   <img src="https://user-images.githubusercontent.com/50550240/99210865-e2cb8880-2801-11eb-957e-63ddc118cdf6.png"/>
 </p>
