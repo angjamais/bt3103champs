@@ -30,7 +30,7 @@ export default {
                 color: '#666'
               }
             },
-            labels: ['Social or Community Service', 'Education', 'Environmental', 'Elderly Care', 'Disabled Care'],
+            labels: ['Social or Community Service', 'Education', 'Environmental', 'Elderly Care', 'Disabled Care', 'Others'],
             responsive: [{
               breakpoint: 480,
               options: {
@@ -44,7 +44,7 @@ export default {
             }]
           },
           eventdata: [],
-          series: [1,1,1,1,1],
+          series: [1,1,1,1,1,1],
     };
   },
   methods: {
@@ -56,7 +56,7 @@ export default {
       };
     },
     async fetchEventData() {
-      await database.collection('events').where("category", "==", "Social or Community Service").get().then((querySnapshot) => {
+      await database.collection('events').where("category", "==", "Community Service").get().then((querySnapshot) => {
          
          this.eventdata.push(querySnapshot.size)
          console.log("Event data" + this.eventdata)
@@ -74,6 +74,10 @@ export default {
           console.log("Event data" + this.eventdata)
       });   
       await database.collection('events').where("category", "==", "Disabled Care").get().then((querySnapshot) => {
+         this.eventdata.push(querySnapshot.size)
+          console.log("Event data" + this.eventdata)
+      });    
+      await database.collection('events').where("category", "==", "Others").get().then((querySnapshot) => {
          this.eventdata.push(querySnapshot.size)
           console.log("Event data" + this.eventdata)
       });    
