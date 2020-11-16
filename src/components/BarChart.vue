@@ -73,7 +73,7 @@ export default {
       west: 0,
       series: [
         {
-          name: "series-1",
+          name: "Events",
          // data: [30, 40, 45, 30, 49]
          data: this.eventdata
         }
@@ -109,7 +109,7 @@ export default {
       });  
       this.series = [
         {
-          name: "series-1",
+          name: "Events",
           data: [this.north, this.south, this.east, this.west, this.central]
         }
       ] 
