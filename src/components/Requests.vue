@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="padding:10px;">
         <button class="button" v-on:click="redirect">Make Request</button>
         <div id="filter">
             <b-button v-on:click="changeFilter('all')" class="button filter">All</b-button>
