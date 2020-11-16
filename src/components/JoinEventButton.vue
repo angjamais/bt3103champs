@@ -9,7 +9,7 @@
 
 <style scope>
 button{
-    background-color: rgb(102, 240, 187);
+    background-color:teal;
     border: 0px;
     width: 200px;
     height: 80px;
@@ -17,5 +17,6 @@ button{
     font-size:25px;
     color:black;
     padding:4px;
+    border-radius: 4px;
 }
 </style>
