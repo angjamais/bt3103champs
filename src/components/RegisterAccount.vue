@@ -155,6 +155,7 @@
                         if (!doc.data()) {
                             //Upload profile image and get url
                             await this.onUpload()
+
                             var account = {
                                 username: this.acc.username,
                                 password: sha256(this.acc.password),
