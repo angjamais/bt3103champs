@@ -1,7 +1,7 @@
 <template>
 <div id="main">
     <h1> We appreciate your help! </h1>
-    <h2>We are currently raising funds for these active projects and households</h2>
+    <h2>Here are some of our beneficiaries, click on their pictures to find out more</h2>
     <div class="donate">
     <div class="donate-panel"
          v-for="photo in photos"
@@ -38,6 +38,7 @@ export default {
 <style scoped>
     #main{
         width:100%;
+        height: 100%;
     }
   .donate {
     width: 100%;

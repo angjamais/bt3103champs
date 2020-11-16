@@ -1,6 +1,6 @@
 import Donate from './components/Donate.vue'
 import DonateForm from './components/DonateForm.vue'
-//import Dummy from './components/HelloWorld.vue'
+import Dummy from './components/HelloWorld.vue'
 import Requests from './components/Requests.vue'
 import Home from './components/Home.vue'
 import JoinUs from './components/JoinUs.vue'
@@ -42,5 +42,6 @@ export default[
     { path: '/submitrequest-donate', component: rdonation },
     { path: '/submitrequest-recruitment', component: rrecruitment },
     { path: '/submitrequest-online',  component: ronline },
-    { path: '/submitrequest-request',  component: rrequest },
+    { path: '/submitrequest-request', component: rrequest },
+    { path: '/img', component: Dummy },
 ]

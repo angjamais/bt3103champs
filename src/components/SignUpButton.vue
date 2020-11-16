@@ -9,7 +9,7 @@
 
 <style scope>
 button{
-    background-color: rgb(102, 240, 187);
+    background-color:teal;
     border: 0px;
     width: 250px;
     height: 80px;

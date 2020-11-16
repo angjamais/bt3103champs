@@ -28,7 +28,7 @@
 
             <b-form-group label="Date of Birth:" id="input-group">
                 <b-col>
-                    <b-col><b-form-input id="input-1" v-model="acc.dob" type="text" required placeholder="Use the format: DDMMYYYY" /></b-col>
+                    <b-col><b-form-datepicker id="input-1" v-model="acc.dob" type="text" required></b-form-datepicker></b-col>
                 </b-col>
             </b-form-group>
 
@@ -76,6 +76,12 @@
                                required></b-form-select>
             </b-form-group>
 
+            <b-form-group label="Profile Picture" label-for="form-image" description="Upload a picture of yourself" style="margin-top:10px;">
+                <b-input-group>
+                    <input type="file" @change="onFileSelected">
+                </b-input-group>
+            </b-form-group>
+
             <b-form-group id="input-group-4">
                 <b-form-checkbox-group id="checkboxes-4">
                     <b-form-checkbox value="me">Subscribe to our newsletters</b-form-checkbox>
@@ -91,6 +97,7 @@
 <script>
     import { sha256 } from 'js-sha256';
     import database from '../firebase.js'
+    import axios from 'axios'
     import { BFormGroup, BButton, BForm, BFormCheckbox, BFormCheckboxGroup, BFormSelect, BFormInput } from "bootstrap-vue";
     export default {
         data() {
@@ -111,8 +118,10 @@
                     contact: '',
                     address: '', 
                 },
-                occupations: [{ text: 'Select One', value: null }, "Student", "Working Adult", "Retired"],
-                genders: [{ text: 'Select One', value: null }, "Male", "Female"]
+                occupations: ["Student", "Working Adult", "Retired"],
+                genders: [ "Male", "Female"],
+                selectedFile: null,
+                profile_pic_url: "",
 
 
             }
@@ -127,10 +136,26 @@
             'b-form': BForm,
         },
         methods: {
+            onFileSelected(event) {
+                console.log(event)
+                this.selectedFile = event.target.files[0]
+            },
+            async onUpload() {
+                alert("Uploading")
+                const fd = new FormData();
+                fd.append('image', this.selectedFile, this.acc.username)
+                await axios.post('https://us-central1-bt3103-e1798.cloudfunctions.net/uploadFile', fd).then((res) => {
+                    this.profile_pic_url = res.data.url;
+                })
+
+            },
             addAccount() {
                 if (this.acc.password === this.acc.confirmpassword && this.acc.confirmpassword) {
-                    database.collection('accounts').doc(this.acc.username).get().then((doc) => {
+                    database.collection('accounts').doc(this.acc.username).get().then(async (doc) => {
                         if (!doc.data()) {
+                            //Upload profile image and get url
+                            await this.onUpload()
+
                             var account = {
                                 username: this.acc.username,
                                 password: sha256(this.acc.password),
@@ -144,9 +169,10 @@
                                 gender: this.acc.gender,
                                 dob: this.acc.dob,
                                 events: [],
-                                my_events:[],
+                                my_events: [],
+                                profile_pic_url: this.profile_pic_url,
                             }
-                            database.collection('accounts').doc(this.acc.username).set(account)
+                            await database.collection('accounts').doc(this.acc.username).set(account)
                             alert('Registration Successful!')
                             localStorage.setItem("username", this.acc.username);
                             this.$router.push({ path: '/personal' });
@@ -166,7 +192,8 @@
                                 dob: '',
                                 my_events: [],
                                 events:[],
-                            }
+                                }
+                   
 
                         } else {
                             alert("Username already taken")
