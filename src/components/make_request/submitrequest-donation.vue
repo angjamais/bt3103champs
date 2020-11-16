@@ -21,7 +21,7 @@
            </b-row>
                       <b-row>
                <b-col cols=6>
-                      <b-form-group label="Event Category:">
+                      <b-form-group  label="Event Category:">
                 <b-form-select id="input-3" v-model="rqst.category" :options="categories" required></b-form-select>
             </b-form-group>
                </b-col>

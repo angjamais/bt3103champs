@@ -1,5 +1,5 @@
 <template>
-    <div class="vue-tempalte">
+    <div class="vue-tempalte" id="root">
         <form>
             <h3>Sign In</h3>
             <br>
@@ -73,6 +73,10 @@
 </script>
 
 <style scoped>
+    #root {
+        height: 70vh;
+        margin-top: 2%;
+    }
     .form-group {
         margin-left:33%;
         margin-right:33%;
