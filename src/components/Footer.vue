@@ -1,11 +1,9 @@
 <template>
-  <div class="footer">
       <footer>
           <div id="spacing"></div>
           <div id="spacing"></div>
           <p id="words"  v-html="'<br/>' + detail + '<br/>' + copyRtSymbol +title"></p>
           <div id="logo-spacing">
- 
               <a href= "https://twitter.com/official_ihelp">
               <img id="logo" src="../assets/twitter.png" /></a>
               <a href= "https://www.instagram.com/ihelp.official/">
@@ -14,8 +12,6 @@
           </div>
           <div id="spacing"></div>
       </footer>
-    
-  </div>
 </template>
 
 <script>
@@ -36,29 +32,27 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     footer {
-        padding: 5px;
         text-align: center;
         font-family: Arial;
         color: black;
-        height: 50px;
         vertical-align: middle;
         display: flex;
         flex-direction: row;
         width:100%;
+        background-color:seashell;
     }
     #words {
         text-align: center;
         font-family: Arial;
         color: black;
-        height: 50px;
         flex:60;
-        margin-top:0px;
         font-size: 15px
     }
     #logo-spacing{
         flex:1;
         display:flex;
         flex-direction:row;
+        margin-top: 20px;
     }
     #spacing{
         flex:5;
