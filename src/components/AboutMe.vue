@@ -27,8 +27,8 @@
                 <td width="130px">{{e.type}}</td>
                 <td width="80px" v-if="e.status">Ongoing</td>
                 <td width="80px" v-else>Ended</td>
-                <button v-on:click="redirectEvent(e.id)">Go to event</button>
-                <button v-on:click="archiveEvent(e.id, e.status)">Achieve Event</button>
+                <button v-on:click="redirectEvent(e.id, e.type)">Go to event</button>
+                <button v-on:click="archiveEvent(e.id, e.status)">Archieve Event</button>
             </tr>
         </table>
         <h3>Joined events</h3>
@@ -44,7 +44,7 @@
                 <td width="130px">{{e.type}}</td>
                 <td width="80px" v-if="e.status">Ongoing</td>
                 <td width="80px" v-else>Ended</td>
-                <button @click="redirectEvent(e.id, 'donate')">Go to event</button>
+                <button @click="redirectEvent(e.id, e.type)">Go to event</button>
                 <button v-on:click="quitEvent(e.id)">Quit event</button>
             </tr>
         </table>
@@ -118,7 +118,7 @@
             },
             getMyEvent(eventID) {
                 database.collection("events").doc(eventID).get().then(doc => {
-                        this.my_events.push({ id: eventID, title: doc.data().title, type: doc.data().event_type, status: doc.data().event_status })
+                    this.my_events.push({ id: eventID, title: doc.data().title, type: doc.data().event_type, status: doc.data().event_status })
                 })
             },
             getPartEvent(eventID) {
