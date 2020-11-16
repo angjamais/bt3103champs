@@ -1,23 +1,10 @@
 <template>
-  <div>
+  <div id="root">
     <header id="panel">
       <div id="spacing"></div>
       <img id="logo" src="../assets/iHelp.png" />
       <h1 id="slogan">iHelp</h1>
       <div id="spacing-middle"></div>
-      <b-nav-form id="form">
-        <b-form-input
-          size="sm"
-          class="mr-sm-2"
-          placeholder="Search"
-        ></b-form-input>
-        <b-button size="sm" id="search-icon" class="my-2 my-sm-0" type="submit"
-          >Search</b-button
-        >
-      </b-nav-form>
-      <router-link to="/inbox" exact
-        ><img id="logo-icon" src="../assets/email.png"
-      /></router-link>
       <router-link to="/personal" exact
         ><img id="logo-icon" src="../assets/user-profile.png" />
       </router-link>
@@ -88,14 +75,17 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#root {
+  margin: 0px;
+}
 #panel {
   width:100%;
   background: rgb(193, 237, 121);
   height: 100px;
-  margin-top: -50px;
-  padding: 10px;
   display: flex;
   flex-direction: row;
+  padding-top: 10px;
+  margin-top:-60px;
 }
 #logo {
   height: 90px;
