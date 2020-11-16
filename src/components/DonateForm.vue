@@ -1,6 +1,6 @@
 <template>
   <!-- Default form contact -->
-    <form>
+    <form @submit="donate">
         <br>
         <p class="form-title">Support your chosen cause</p>
         <h5>Leave a one time $10 donation</h5>
@@ -43,10 +43,7 @@
         <!-- Default textarea message -->
         <label for="defaultFormContactMessageEx" class="grey-text">Your message:</label>
         <textarea type="text" id="defaultFormContactMessageEx" class="form-control" rows="3" value="Optional"></textarea>
-
-        <div class="text-center mt-4">
-            <button class="btn btn-outline-warning" type="submit" v-on:click="donate">Donate<i class="far fa-paper-plane ml-2"></i></button>
-        </div>
+        <button class="btn btn-outline-warning" type="submit" >Donate<i class="far fa-paper-plane ml-2"></i></button>
     </form>
   <!-- Default form contact -->
 </template>
@@ -64,20 +61,24 @@
             return {
                 selectedBeneficiary: 'E Elder care',
                 selectedStatus: 'Myself',
-                statuses: ['Myself', 'An organisation', 'Someone Else']
+                statuses: ['Myself', 'An organisation', 'Someone Else'],
+                participated_event:[],
             }
         },
         methods: {
-             donate() {
+            donate() {
                 var username = localStorage.getItem("username");
-                database.collection('accounts').doc(username).get().then(async (doc) => {
+                database.collection('accounts').doc(username).get().then((doc) => {
                     var data = doc.data()
                     var participated_event = data.events
                     participated_event.push(this.eventID)
-                    await database.collection('accounts').doc(username).set({ events: participated_event }, { merge: true }).then(() => {
-                        alert("Thank you for your donation!");
-                    })
-                })
+                    database.collection('accounts').doc(username).set({ events: participated_event }, { merge: true })
+                    alert("Thank you for your donation!");
+                    this.$router.push("requests")
+                });
+                
+                    
+                
             }
         }
     }

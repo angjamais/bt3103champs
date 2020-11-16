@@ -60,7 +60,7 @@
                          aria-modal="false"
                          aria-labelledby="form-confirm-label"
                          class="text-center p-3">
-                        <p><strong id="form-confirm-label">Are you sure?</strong></p>
+                        <p><strong id="form-confirm-label">Please confirm to join this event</strong></p>
                         <div class="d-flex">
                             <b-button variant="outline-danger" class="mr-3" @click="onCancel">
                                 Cancel
@@ -97,6 +97,7 @@
                 processing: false,
                 counter: 1,
                 interval: null,
+                output:null,
                 rqst: {
                     title: "",
                     description: "",
@@ -141,9 +142,13 @@
             },
             onOK() {
                 // Act a bit
-
+                var username = localStorage.getItem("username")
+                if (username == this.rqst.organiser_email) {
+                    alert("Cannot join your own event")
+                    return;
+                }
                 this.counter = 1
-                var output = this.joinEvent();
+                this.joinEvent();
                 this.processing = true
                 this.clearInterval()
                 this.interval = setInterval(() => {
@@ -154,7 +159,7 @@
                         this.$nextTick(() => {
                             this.busy = this.processing = false
                             this.$router.push("requests");
-                            if (output === 1) {
+                            if (this.output === 1) {
                                 alert("Event joined!")
                             } else {
                                 alert("Already joined this event!")
@@ -195,6 +200,7 @@
                         event_participants: data.event_participants,
                         slots: s,
                         event_pic: data.event_pic,
+                        organiser_email: data.organiser_email,
                     }
                     this.rqst = rqst;
                 })
@@ -210,10 +216,10 @@
                         var participated_event = data.events
                         participated_event.push(this.eventID)
                         database.collection('accounts').doc(username).set({ events: participated_event }, {merge:true})
-                        return 1;
+                        this.output = 1;
                     })
                 } else {
-                    return 0;
+                    this.output = 0;
                 }
 
             }
