@@ -15,7 +15,7 @@
                     <b-input-group-prepend is-text>
                         <b-icon icon="image-fill"></b-icon>
                     </b-input-group-prepend>
-                    <b-form-file id="form-image" accept="image/*"></b-form-file>
+                    <b-form-file id="form-image" ref="input1" @change="previewImage" accept="image/*"></b-form-file>
                 </b-input-group>
             </b-form-group>
 
@@ -112,7 +112,9 @@
                     beneficiary:"",
                 },
                 recruitment: [{ text: 'Select One', value: null }, 1, 2, 3, 4],
-                categories: [{ text: 'Select One', value: null }, "Community Service", "Elderly Care", "Disabled Care", "Environmental", "Education", "Cleaning", "Others"]
+                categories: [{ text: 'Select One', value: null }, "Community Service", "Elderly Care", "Disabled Care", "Environmental", "Education", "Cleaning", "Others"],
+                imageData: null,
+
             }
         },
         beforeDestroy() {

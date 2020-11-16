@@ -76,6 +76,15 @@
                                required></b-form-select>
             </b-form-group>
 
+            <b-form-group label="Profile Picture" label-for="form-image" description="Upload a picture of yourself" style="margin-top:10px;">
+                <b-input-group>
+                    <b-input-group-prepend is-text>
+                        <b-icon icon="image-fill"></b-icon>
+                    </b-input-group-prepend>
+                    <b-form-file required id="form-image" ref="input1" @change="onFileSelected" accept="image/*"></b-form-file>
+                </b-input-group>
+            </b-form-group>
+
             <b-form-group id="input-group-4">
                 <b-form-checkbox-group id="checkboxes-4">
                     <b-form-checkbox value="me">Subscribe to our newsletters</b-form-checkbox>
@@ -91,6 +100,7 @@
 <script>
     import { sha256 } from 'js-sha256';
     import database from '../firebase.js'
+    import axios from 'axios'
     import { BFormGroup, BButton, BForm, BFormCheckbox, BFormCheckboxGroup, BFormSelect, BFormInput } from "bootstrap-vue";
     export default {
         data() {
@@ -112,7 +122,9 @@
                     address: '', 
                 },
                 occupations: [{ text: 'Select One', value: null }, "Student", "Working Adult", "Retired"],
-                genders: [{ text: 'Select One', value: null }, "Male", "Female"]
+                genders: [{ text: 'Select One', value: null }, "Male", "Female"],
+                selectedFile: null,
+                profile_pic_url: "",
 
 
             }
@@ -127,10 +139,24 @@
             'b-form': BForm,
         },
         methods: {
+            onFileSelected(event) {
+                console.log(event)
+                this.selectedFile = event.target.files[0]
+            },
+            onUpload() {
+                alert("Uploading")
+                const fd = new FormData();
+                fd.append('image', this.selectedFile, this.selectedFile.name)
+                axios.post('http://localhost:5000/bt3103-e1798/us-central1/uploadFile', fd).then((res) => {
+                    this.profile_pic_url = res.data.url;
+                })
+
+            },
             addAccount() {
                 if (this.acc.password === this.acc.confirmpassword && this.acc.confirmpassword) {
                     database.collection('accounts').doc(this.acc.username).get().then((doc) => {
                         if (!doc.data()) {
+                            this.onUpload() //Upload profile image and get url
                             var account = {
                                 username: this.acc.username,
                                 password: sha256(this.acc.password),
@@ -144,7 +170,8 @@
                                 gender: this.acc.gender,
                                 dob: this.acc.dob,
                                 events: [],
-                                my_events:[],
+                                my_events: [],
+                                profile_pic_url: this.profile_pic_url,
                             }
                             database.collection('accounts').doc(this.acc.username).set(account)
                             alert('Registration Successful!')
