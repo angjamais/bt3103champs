@@ -86,17 +86,19 @@
             }
         },
         methods: {
-            quitEvent(eventID) {
+            async quitEvent(eventID) {
                 var username = localStorage.getItem("username");
                 if (confirm("Are you sure you want to quit this event?")) {
-                    database.collection("events").doc(eventID).get().then(doc => {                  //Remove user from events' data
+                    await database.collection("events").doc(eventID).get().then(doc => {
+                        //Remove user from events' data
                         var event_participants = doc.data().event_participants;
                         var new_event_participants = event_participants.filter(user => user != username);
                         database.collection("events").doc(eventID).set({ event_participants: new_event_participants }, { merge: true })
-                    })
+                    }).then(() => {
                     var events = this.events_raw.filter((e) => e != eventID)
-                    database.collection("accounts").doc(username).set({ events: events }, {merge:true}) //Remove the vent from user's database
-                    location.reload();
+                        database.collection("accounts").doc(username).set({ events: events }, { merge: true }).then(() => { location.reload(); }) //Remove the event from user's database
+                        
+                    })
                 } 
             },
             redirectEvent(eventID, type) {
