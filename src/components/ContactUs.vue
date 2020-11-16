@@ -7,7 +7,7 @@
         <div id='right'>
             <div class='container'>
                 <p style='font-size: 10px; color: grey'>
-                    Phone: +65 XXXX XXXX <br>
+                    Phone: +65 8728 1234<br>
                     National University of Singapore <br>
                     21 Lower Kent Ridge Rd, Singapore 119077 <br>
                     Email: contact@ihelp.com <br>
