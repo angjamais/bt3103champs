@@ -33,6 +33,8 @@ export default {
         margin-top: 60px;
         display: flex;
         flex-direction: column;
+        background-image: url("assets/BG.jpg");
+        background-size:cover;
     }
 
     #body {
