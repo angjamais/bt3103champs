@@ -4,10 +4,10 @@ iHelp is a web application that connects volunteers and donors with underprivile
 Visit our web application here *to insert the deployed link here*
 
 ### Team members
-Ang Jamais
-Lee Wei Glenmond
-Lin Huaian
-Tang Yin
+-Ang Jamais
+-Lee Wei Glenmond
+-Lin Huaian
+-Tang Yin
 
 ## Project setup
 ```
