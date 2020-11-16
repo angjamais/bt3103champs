@@ -29,6 +29,7 @@
                             Person of Contact: <br />{{rqst.organiser}}<br />
                             Contact Number: {{rqst.contact}}<br />
                             Event Status: Active<br />
+                            Slots: {{rqst.slots}}
                         </p>
                     </b-row>
                 </b-col>

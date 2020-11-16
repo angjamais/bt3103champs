@@ -20,6 +20,7 @@
 
             <label>Location: </label>
             <b-form-input id="input-1" type="text" v-model="rqst.location" required placeholder="Location" />
+
             <b-form-group label="Region:">
                 <b-form-select id="input-3" v-model="rqst.region" :options="regions" required></b-form-select>
             </b-form-group>
@@ -69,7 +70,7 @@
                          aria-modal="false"
                          aria-labelledby="form-confirm-label"
                          class="text-center p-3">
-                        <p><strong id="form-confirm-label">Are you sure?</strong></p>
+                        <p><strong id="form-confirm-label">Click yes to create event</strong></p>
                         <div class="d-flex">
                             <b-button variant="outline-danger" class="mr-3" @click="onCancel">
                                 Cancel
