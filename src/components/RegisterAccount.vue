@@ -156,7 +156,7 @@
                 if (this.acc.password === this.acc.confirmpassword && this.acc.confirmpassword) {
                     database.collection('accounts').doc(this.acc.username).get().then((doc) => {
                         if (!doc.data()) {
-                            this.onUpload() //Upload profile image and get url
+                            //this.onUpload() //Upload profile image and get url
                             var account = {
                                 username: this.acc.username,
                                 password: sha256(this.acc.password),

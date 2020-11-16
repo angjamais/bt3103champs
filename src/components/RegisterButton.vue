@@ -7,15 +7,16 @@
 <script>
 </script>
 
-<style scope>
+<style scoped>
 button{
-    background-color: rgb(102, 240, 187);
+    background-color:rgba(28, 152, 152, 0.552);
     border: 0px;
-    width: 190px;
-    height: 60px;
+    width: 160px;
+    height: 50px;
     text-align:'center';
     font-size:25px;
     color:black;
     padding:4px;
+    border-radius:4px;
 }
 </style>
